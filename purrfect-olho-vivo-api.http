@@ -1,0 +1,6 @@
+@purrfect_olho_vivo_api_HostAddress = http://localhost:5025
+
+GET {{purrfect_olho_vivo_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\purrfect-olho-vivo-api.props" />
+</Project>
