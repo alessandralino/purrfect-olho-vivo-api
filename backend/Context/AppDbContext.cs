@@ -8,6 +8,7 @@ namespace purrfect_olho_vivo_api.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Linha> Linhas { get; set; }
+        public DbSet<Veiculo> Veiculo { get; set; }
     }
 
 }

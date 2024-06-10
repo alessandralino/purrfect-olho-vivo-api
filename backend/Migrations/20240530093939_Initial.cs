@@ -22,6 +22,8 @@ namespace purrfect_olho_vivo_api.Migrations
                 {
                     table.PrimaryKey("PK_Linhas", x => x.Id);
                 });
+
+             
         }
 
         /// <inheritdoc />
