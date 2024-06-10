@@ -66,5 +66,21 @@ namespace purrfect_olho_vivo_api.Controllers
             return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoWithLinha);
         }
 
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var veiculo = await _context.Veiculo.FindAsync(id);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Veiculo.Remove(veiculo);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }        
 }
