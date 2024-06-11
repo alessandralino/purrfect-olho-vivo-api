@@ -21,13 +21,17 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Linha>>> GetAll()
         {
-            return await _context.Linhas.ToListAsync();
+            return _context.Linhas
+                       .Include(l => l.Paradas)
+                       .ToList();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Linha>> GetLinha(int id)
         {
-            var linha = await _context.Linhas.FindAsync(id);
+            var linha =  _context.Linhas
+                       .Include(l => l.Paradas)
+                       .SingleOrDefault(l => l.Id == id);
 
             if (linha == null)
             {
@@ -38,21 +42,27 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Linha>> criar(LinhaCreateRequest request)
+        public async Task<ActionResult<Linha>> Create(LinhaCreateRequest request)
         {
             var linha = new Linha
             {
-                Name = request.Name
+                Name = request.Name,
+                Paradas = request.Paradas.Select(p => new Parada
+                {
+                    Name = p.Name,
+                    Latitude = p.Latitude,
+                    Longitude = p.Longitude
+                }).ToList()
             };
 
             _context.Linhas.Add(linha);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetLinha), new { id = linha.Id }, linha);
+            return CreatedAtAction(nameof(GetAll), new { id = linha.Name }, linha);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLinha(int id, Linha linha)
+        public async Task<IActionResult> Update(int id, Linha linha)
         {
             if (id != linha.Id)
             {
