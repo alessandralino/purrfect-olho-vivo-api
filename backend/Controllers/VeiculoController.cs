@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿ 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using purrfect_olho_vivo_api.ViewModels.Responses;
 using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
@@ -46,7 +43,7 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Veiculo>> Create(VeiculoCreateRequest request)
+        public async Task<ActionResult<VeiculoCreateResponse>> Create(VeiculoCreateRequest request)
         {
             var veiculo = new Veiculo
             {
@@ -60,10 +57,27 @@ namespace purrfect_olho_vivo_api.Controllers
             await _context.SaveChangesAsync();
 
             var veiculoWithLinha = await _context.Veiculo
-            .Include(v => v.Linha)
-            .FirstOrDefaultAsync(v => v.Id == veiculo.Id);
+           .Include(v => v.Linha)
+           .FirstOrDefaultAsync(v => v.Id == veiculo.Id);
 
-            return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoWithLinha);
+            if (veiculoWithLinha == null)
+            {
+                return NotFound();
+            }
+
+            var veiculoResponse = new VeiculoCreateResponse
+            {
+                Id = veiculoWithLinha.Id,
+                Name = veiculoWithLinha.Name,
+                Modelo = veiculoWithLinha.Modelo,
+                Linha = new Linha
+                {
+                    Id = veiculoWithLinha.Linha.Id,
+                    Name = veiculoWithLinha.Linha.Name, 
+                }
+            };
+
+            return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoResponse);
         }
 
 
