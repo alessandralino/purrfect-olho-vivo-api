@@ -47,19 +47,31 @@ namespace purrfect_olho_vivo_api.Controllers
             var linha = new Linha
             {
                 Name = request.Name,
-                Paradas = request.Paradas.Select(p => new Parada
-                {
-                    Name = p.Name,
-                    Latitude = p.Latitude,
-                    Longitude = p.Longitude
-                }).ToList()
+                Paradas = new List<Parada>()
             };
 
-            _context.Linhas.Add(linha);
-            _context.SaveChanges();
+            foreach (var paradaRequest in request.Paradas)
+            { 
+                var existingParada = await _context.Parada
+                    .FirstOrDefaultAsync(p => p.Id == paradaRequest.Id);
 
-            return CreatedAtAction(nameof(GetAll), new { id = linha.Name }, linha);
+                if (existingParada != null)
+                { 
+                    linha.Paradas.Add(existingParada);
+                } 
+                else
+                { 
+                    ModelState.AddModelError("Paradas", $"A parada '{paradaRequest.Name}' não foi encontrada no sistema.");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            _context.Linhas.Add(linha);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAll), new { id = linha.Id }, linha);
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Linha linha)

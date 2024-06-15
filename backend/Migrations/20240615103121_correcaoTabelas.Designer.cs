@@ -12,8 +12,8 @@ using purrfect_olho_vivo_api.Context;
 namespace purrfect_olho_vivo_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240611200740_AddLinhaParadaRelationshipFix")]
-    partial class AddLinhaParadaRelationshipFix
+    [Migration("20240615103121_correcaoTabelas")]
+    partial class correcaoTabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -7,63 +7,28 @@
       "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:controllers\\linhacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\models\\parada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\models\\parada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\requests\\linhacreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\requests\\linhacreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\models\\linha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\models\\linha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611193522_AddLinhaParadaRelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240611193522_AddLinhaParadaRelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\requests\\paradacreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\requests\\paradacreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OlhoVivoDatabase/True/SqlTable/dbo.PosicaoVeiculo.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\models\\posicaoveiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\models\\posicaoveiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192048_AddParadaTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240611192048_AddParadaTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192452_AddPosicaoVeiculoTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240611192452_AddPosicaoVeiculoTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\controllers\\paradacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:controllers\\paradacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\models\\veiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\models\\veiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\responses\\veiculogetallresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\responses\\veiculogetallresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\responses\\veiculocreateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\responses\\veiculocreateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\responses\\veiculoupdateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\responses\\veiculoupdateresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\viewmodels\\models\\parada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:viewmodels\\models\\parada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,32 +38,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "ParadaCreateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\ParadaCreateRequest.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Requests\\ParadaCreateRequest.cs",
+              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\ParadaCreateRequest.cs",
+              "RelativeToolTip": "ViewModels\\Requests\\ParadaCreateRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T10:21:49.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParadaController.cs",
+              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\ParadaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ParadaController.cs",
+              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\ParadaController.cs",
+              "RelativeToolTip": "Controllers\\ParadaController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAApwBcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T10:21:42.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VeiculoController.cs",
+              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\VeiculoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VeiculoController.cs",
+              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\VeiculoController.cs",
+              "RelativeToolTip": "Controllers\\VeiculoController.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAowD4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T10:17:26.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Parada.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Parada.cs",
               "RelativeDocumentMoniker": "ViewModels\\Models\\Parada.cs",
               "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Parada.cs",
               "RelativeToolTip": "ViewModels\\Models\\Parada.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:21:54.421Z",
+              "WhenOpened": "2024-06-15T10:13:58.637Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Linha.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Linha.cs",
               "RelativeDocumentMoniker": "ViewModels\\Models\\Linha.cs",
               "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Linha.cs",
               "RelativeToolTip": "ViewModels\\Models\\Linha.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:18:38.091Z",
+              "WhenOpened": "2024-06-15T10:13:54.315Z",
               "EditorCaption": ""
             },
             {
@@ -107,177 +111,24 @@
               "Title": "LinhaController.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\LinhaController.cs",
               "RelativeDocumentMoniker": "Controllers\\LinhaController.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\LinhaController.cs",
-              "RelativeToolTip": "Controllers\\LinhaController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAiwDoAAAAjAAAA",
+              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\LinhaController.cs*",
+              "RelativeToolTip": "Controllers\\LinhaController.cs*",
+              "ViewState": "AQIAACwAAAAAAAAAAAAUwDUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T15:31:52.125Z",
+              "WhenOpened": "2024-06-15T10:11:12.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VeiculoController.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\VeiculoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\VeiculoController.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\VeiculoController.cs",
-              "RelativeToolTip": "Controllers\\VeiculoController.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAywCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T15:03:07.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LinhaCreateRequest.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\LinhaCreateRequest.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Requests\\LinhaCreateRequest.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\LinhaCreateRequest.cs",
-              "RelativeToolTip": "ViewModels\\Requests\\LinhaCreateRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:39:08.816Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "dbo.PosicaoVeiculo [Dados]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OlhoVivoDatabase/True/SqlTable/dbo.PosicaoVeiculo.sql",
-              "ToolTip": "dbo.PosicaoVeiculo [Dados]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-06-11T19:28:40.9Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20240611193522_AddLinhaParadaRelationship.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611193522_AddLinhaParadaRelationship.cs",
-              "RelativeDocumentMoniker": "Migrations\\20240611193522_AddLinhaParadaRelationship.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611193522_AddLinhaParadaRelationship.cs",
-              "RelativeToolTip": "Migrations\\20240611193522_AddLinhaParadaRelationship.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:35:23.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PosicaoVeiculo.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\PosicaoVeiculo.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Models\\PosicaoVeiculo.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\PosicaoVeiculo.cs",
-              "RelativeToolTip": "ViewModels\\Models\\PosicaoVeiculo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:21:46.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Context\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Context\\AppDbContext.cs",
-              "RelativeToolTip": "Context\\AppDbContext.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAiwBEAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:20:10.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20240611192452_AddPosicaoVeiculoTable.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192452_AddPosicaoVeiculoTable.cs",
-              "RelativeDocumentMoniker": "Migrations\\20240611192452_AddPosicaoVeiculoTable.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192452_AddPosicaoVeiculoTable.cs",
-              "RelativeToolTip": "Migrations\\20240611192452_AddPosicaoVeiculoTable.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:24:52.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20240611192048_AddParadaTable.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192048_AddParadaTable.cs",
-              "RelativeDocumentMoniker": "Migrations\\20240611192048_AddParadaTable.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Migrations\\20240611192048_AddParadaTable.cs",
-              "RelativeToolTip": "Migrations\\20240611192048_AddParadaTable.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T19:20:48.716Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "VeiculoCreateRequest.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\VeiculoCreateRequest.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Requests\\VeiculoCreateRequest.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Requests\\VeiculoCreateRequest.cs",
-              "RelativeToolTip": "ViewModels\\Requests\\VeiculoCreateRequest.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T17:30:11.653Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
               "Title": "Veiculo.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Veiculo.cs",
               "RelativeDocumentMoniker": "ViewModels\\Models\\Veiculo.cs",
               "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Models\\Veiculo.cs",
               "RelativeToolTip": "ViewModels\\Models\\Veiculo.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAYwA8AAAAIAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAzwBIAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T17:29:03.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "VeiculoCreateResponse.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoCreateResponse.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Responses\\VeiculoCreateResponse.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoCreateResponse.cs",
-              "RelativeToolTip": "ViewModels\\Responses\\VeiculoCreateResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T17:28:28.244Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "VeiculoGetAllResponse.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoGetAllResponse.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Responses\\VeiculoGetAllResponse.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoGetAllResponse.cs",
-              "RelativeToolTip": "ViewModels\\Responses\\VeiculoGetAllResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T18:08:08.725Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "VeiculoUpdateResponse.cs",
-              "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoUpdateResponse.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Responses\\VeiculoUpdateResponse.cs",
-              "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\ViewModels\\Responses\\VeiculoUpdateResponse.cs",
-              "RelativeToolTip": "ViewModels\\Responses\\VeiculoUpdateResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T17:53:49.712Z",
+              "WhenOpened": "2024-06-15T10:10:48.597Z",
               "EditorCaption": ""
             }
           ]
