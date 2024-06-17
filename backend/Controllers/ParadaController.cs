@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
+using purrfect_olho_vivo_api.ViewModels.Responses;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -54,6 +55,58 @@ namespace purrfect_olho_vivo_api.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ParadaUpdateResponse>> Update(int id, Parada parada)
+        {
+            if (id != parada.Id)
+            {
+                return BadRequest();
+            }
+
+            var veiculoResponse = new ParadaUpdateResponse();
+
+            try
+            { 
+                _context.Entry(parada).State = EntityState.Modified;
+
+                await _context.SaveChangesAsync();
+
+                var paradaAtualizada = await _context.Parada.FirstOrDefaultAsync(v => v.Id == parada.Id);
+
+                if (paradaAtualizada == null)
+                {
+                    return NotFound();
+                }
+
+                veiculoResponse = new ParadaUpdateResponse()
+                {
+                    Id = paradaAtualizada.Id,
+                    Latitude = paradaAtualizada.Latitude,                  
+                    Longitude = paradaAtualizada.Longitude,
+                    Name = paradaAtualizada.Name
+                };
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ParadaExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(veiculoResponse);
+        }
+          
+        private bool ParadaExists(int id)
+        {
+            return _context.Parada.Any(e => e.Id == id);
         }
 
 
