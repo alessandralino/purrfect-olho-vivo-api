@@ -39,5 +39,23 @@ namespace purrfect_olho_vivo_api.Controllers
 
             return Ok(parada);
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var parada = await _context.Parada.FindAsync(id);
+            if (parada == null)
+            {
+                return NotFound();
+            }
+
+            _context.Parada.Remove(parada);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
     }
 }
