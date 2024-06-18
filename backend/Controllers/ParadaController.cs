@@ -18,6 +18,19 @@ namespace purrfect_olho_vivo_api.Controllers
             _context = context;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Parada>> GetParadaById(int id)
+        {
+            var parada = await _context.Parada.FindAsync(id);
+
+            if (parada == null)
+            {
+                return NotFound();
+            } 
+
+            return parada;
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Parada>>> GetAll()
         {
@@ -108,7 +121,5 @@ namespace purrfect_olho_vivo_api.Controllers
         {
             return _context.Parada.Any(e => e.Id == id);
         }
-
-
     }
 }
