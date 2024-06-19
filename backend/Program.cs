@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Configuration;
 using purrfect_olho_vivo_api.Context;
+using purrfect_olho_vivo_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
  

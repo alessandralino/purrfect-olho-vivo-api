@@ -8,6 +8,8 @@ using purrfect_olho_vivo_api.ViewModels.Responses;
 using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using purrfect_olho_vivo_api.Services;
+using Azure.Core;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -15,40 +17,25 @@ namespace purrfect_olho_vivo_api.Controllers
     [ApiController]
     public class LinhaController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ILinhaService _linhaService;
 
-        public LinhaController(AppDbContext context)
+        public LinhaController(ILinhaService linhaService)
         {
-            _context = context;
+            _linhaService = linhaService;
         }
 
         [HttpGet]
         public async Task<ActionResult<LinhaGetAllResponse>> GetAll()
         {
-            var linhas = _context.Linha.Include(l => l.Paradas).ToList();
+            var response = await _linhaService.GetAll();
 
-            var options = linhas.Select(l => new LinhaGetAllResponse
-            {
-                Id = l.Id,
-                Name = l.Name,
-                Paradas = l.Paradas.Select(p => new Parada
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Latitude = p.Latitude,
-                    Longitude = p.Longitude
-                }).ToList()
-            }).ToList();
-
-            return Ok(options);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Linha>> GetLinha(int id)
+        public async Task<ActionResult<Linha>> GetLinhaById(int id)
         {
-            var linha =  _context.Linha
-                       .Include(l => l.Paradas)
-                       .SingleOrDefault(l => l.Id == id);
+            var linha = await _linhaService.GetLinhaById(id);
 
             if (linha == null)
             {
@@ -61,90 +48,45 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpPost]
         public async Task<ActionResult<Linha>> Create(LinhaCreateRequest request)
         {
-            var linha = new Linha
+            try
             {
-                Name = request.Name,
-                Paradas = new List<Parada>()
-            };
+                var linha = await _linhaService.CreateLinha(request);
 
-            foreach (var paradaRequest in request.Paradas)
-            {
-                var existingParada = await _context.Parada
-                    .FirstOrDefaultAsync(p => p.Id == paradaRequest);
-
-                if (existingParada != null)
-                {
-                    linha.Paradas.Add(existingParada);
-                }
-                else
-                {
-                    return BadRequest($"A parada '{paradaRequest}' não foi encontrada no sistema.");
-                }
+                return CreatedAtAction(nameof(GetAll), new { id = linha.Id }, linha);
             }
-
-            _context.Linha.Add(linha);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetAll), new { id = linha.Id }, linha);
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Linha>> Update(int id, LinhaUpdateRequest linhaUpdateRequest)
+        public async Task<ActionResult<Linha>> Update(int id, LinhaUpdateRequest request)
         {
-            if (id != linhaUpdateRequest.Id)
+            try
             {
-                return BadRequest();
+                var linha = await _linhaService.UpdateLinha(id, request);
+
+                return Ok(linha);
             }
-
-            var linha = await _context.Linha.Include(l => l.Paradas).FirstOrDefaultAsync(l => l.Id == id);
-
-            if (linha == null)
+            catch (KeyNotFoundException)
             {
                 return NotFound();
             }
-
-            linha.Name = linhaUpdateRequest.Name;
-
-            var paradas = await _context.Parada.Where(p => linhaUpdateRequest.Paradas.Contains(p.Id)).ToListAsync();
-            
-            linha.Paradas.Clear();
-
-            foreach (var parada in paradas)
+            catch (ArgumentException ex)
             {
-                linha.Paradas.Add(parada);
+                return BadRequest(ex.Message);
             }
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Linha.Any(e => e.Id == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok(linha);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLinha(int id)
+        public async Task<IActionResult> DeleteLinha(long id)
         {
-            var linha = await _context.Linha.FindAsync(id);
-            if (linha == null)
+            var success = await _linhaService.DeleteLinha(id);
+            if (!success)
             {
                 return NotFound();
             }
-
-            _context.Linha.Remove(linha);
-            await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -152,23 +94,13 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpGet("parada/{idParada}")]
         public async Task<ActionResult<IEnumerable<Linha>>> GetLinhaPorParada(int idParada)
         {
-            var linhas = await _context.Linha
-                .Include(l => l.Paradas)
-                .Where(l => l.Paradas.Any(p => p.Id == idParada))
-                .ToListAsync();
+            var linhas = await _linhaService.GetLinhaPorParada(idParada);
 
             if (linhas == null || !linhas.Any())
             {
                 return NotFound();
             }
-
             return Ok(linhas);
-        }
-
-
-        private bool LinhaExists(int id)
-        {
-            return _context.Linha.Any(e => e.Id == id);
         }
     }
 }
