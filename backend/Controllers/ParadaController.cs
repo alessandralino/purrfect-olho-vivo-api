@@ -50,24 +50,22 @@ namespace purrfect_olho_vivo_api.Controllers
             _context.Parada.Add(parada);
             _context.SaveChanges(); 
             
-
             return Ok(parada);
         }
 
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpPost("posicao")]
+        public async Task<ActionResult<IEnumerable<Parada>>> GetParadaByPosicao(ParadaGetByPosicaoRequest request)
         {
-            var parada = await _context.Parada.FindAsync(id);
-            if (parada == null)
+            var paradas = _context.Parada
+                .Where((p => p.Latitude == request.latitude && p.Latitude == request.latitude))
+                .ToList();
+
+            if (paradas == null || !paradas.Any())
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            _context.Parada.Remove(parada);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(paradas);
         }
 
         [HttpPut("{id}")]
@@ -81,7 +79,7 @@ namespace purrfect_olho_vivo_api.Controllers
             var veiculoResponse = new ParadaUpdateResponse();
 
             try
-            { 
+            {
                 _context.Entry(parada).State = EntityState.Modified;
 
                 await _context.SaveChangesAsync();
@@ -96,7 +94,7 @@ namespace purrfect_olho_vivo_api.Controllers
                 veiculoResponse = new ParadaUpdateResponse()
                 {
                     Id = paradaAtualizada.Id,
-                    Latitude = paradaAtualizada.Latitude,                  
+                    Latitude = paradaAtualizada.Latitude,
                     Longitude = paradaAtualizada.Longitude,
                     Name = paradaAtualizada.Name
                 };
@@ -116,7 +114,23 @@ namespace purrfect_olho_vivo_api.Controllers
 
             return Ok(veiculoResponse);
         }
-          
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var parada = await _context.Parada.FindAsync(id);
+            if (parada == null)
+            {
+                return NotFound();
+            }
+
+            _context.Parada.Remove(parada);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+         
         private bool ParadaExists(int id)
         {
             return _context.Parada.Any(e => e.Id == id);
