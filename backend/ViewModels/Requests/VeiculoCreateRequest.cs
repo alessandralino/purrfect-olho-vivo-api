@@ -7,7 +7,7 @@ namespace purrfect_olho_vivo_api.ViewModels.Requests
     {
         public string Name { get; set; }
         public string Modelo { get; set; }
-        public int linhaId { get; set; }
+        public long linhaId { get; set; }
 
     }
 }

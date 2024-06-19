@@ -22,7 +22,10 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VeiculoGetAllResponse>>> GetAll()
         {
-            var lista = await _context.Veiculo.Include(v => v.Linha).ToListAsync();
+            var lista = await _context.Veiculo
+                .Include(v => v.Linha)
+                .ThenInclude(l => l.Paradas)
+                .ToListAsync();
 
             var responseList = lista.Select(v => new VeiculoGetAllResponse
             {
@@ -33,6 +36,13 @@ namespace purrfect_olho_vivo_api.Controllers
                 {
                     Id = v.Linha.Id,
                     Name = v.Linha.Name,
+                    Paradas = v.Linha.Paradas.Select(p => new Parada
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Latitude = p.Latitude,
+                        Longitude = p.Longitude,
+                    }).ToList()
                 }
             }).ToList();
 
@@ -57,6 +67,26 @@ namespace purrfect_olho_vivo_api.Controllers
             return veiculoWithLinha;
         }
 
+        //Veiculos por Linha:
+        //Recebe o identificador de uma linha e retorna os veículos associados a linha informada
+        [HttpGet("veiculo/{idLinha}")]
+        public async Task<ActionResult<Veiculo>> GetVeiculoByLinha(int idLinha)
+        {
+            var veiculos = await _context.Veiculo 
+                .Where(v => v.LinhaId == idLinha)
+                .ToListAsync();
+
+            // Verifica se foram encontrados veículos para a linha especificada
+            if (veiculos == null || !veiculos.Any())
+            {
+                return NotFound();
+            }
+
+            // Retorna a lista de veículos associados à linha especificada
+            return Ok(veiculos);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<VeiculoCreateResponse>> Create(VeiculoCreateRequest request)
         {
@@ -64,7 +94,7 @@ namespace purrfect_olho_vivo_api.Controllers
             {
                 Name = request.Name,
                 Modelo = request.Modelo,   
-                //LinhaFkId = request.linhaId
+                LinhaId = request.linhaId
             };
 
             _context.Veiculo.Add(veiculo); 
@@ -73,6 +103,7 @@ namespace purrfect_olho_vivo_api.Controllers
 
             var veiculoWithLinha = await _context.Veiculo
            .Include(v => v.Linha)
+           .ThenInclude(l => l.Paradas)
            .FirstOrDefaultAsync(v => v.Id == veiculo.Id);
 
             if (veiculoWithLinha == null)
@@ -88,9 +119,18 @@ namespace purrfect_olho_vivo_api.Controllers
                 Linha = new Linha
                 {
                     Id = veiculoWithLinha.Linha.Id,
-                    Name = veiculoWithLinha.Linha.Name, 
+                    Name = veiculoWithLinha.Linha.Name,
+                    Paradas = veiculoWithLinha.Linha.Paradas.Select(p => new Parada
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Latitude = p.Latitude,
+                        Longitude = p.Longitude,
+                    }).ToList()
                 }
             };
+  
+
 
             return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoResponse);
         }

@@ -106,7 +106,9 @@ namespace purrfect_olho_vivo_api.Controllers
             linha.Name = linhaUpdateRequest.Name;
 
             var paradas = await _context.Parada.Where(p => linhaUpdateRequest.Paradas.Contains(p.Id)).ToListAsync();
+            
             linha.Paradas.Clear();
+
             foreach (var parada in paradas)
             {
                 linha.Paradas.Add(parada);
@@ -146,7 +148,6 @@ namespace purrfect_olho_vivo_api.Controllers
             return NoContent();
         }
 
-        /*Linhas por Parada: Recebe o identificador de uma parada e retorna as linhas associadas a parada informada*/
 
         [HttpGet("parada/{idParada}")]
         public async Task<ActionResult<IEnumerable<Linha>>> GetLinhaPorParada(int idParada)

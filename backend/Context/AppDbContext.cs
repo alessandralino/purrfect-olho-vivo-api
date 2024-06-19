@@ -17,6 +17,9 @@ namespace purrfect_olho_vivo_api.Context
                .WithMany(p => p.Linhas)
                .UsingEntity(j => j.ToTable("LinhaParada"));
 
+            modelBuilder.Entity<Veiculo>()
+               .HasOne(p => p.Linha);
+
             base.OnModelCreating(modelBuilder);
         }
 
