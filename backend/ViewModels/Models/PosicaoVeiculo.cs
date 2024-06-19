@@ -6,16 +6,13 @@ namespace purrfect_olho_vivo_api.ViewModels.Models
     public class PosicaoVeiculo
     {
         [Key]
-        public string Id { get; set; }                  
-        public long Latitude { get; set; }
-        public long Longitude { get; set; }
+        public long Id { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
-        public int VeiculoFkId { get; set; }
-
-        [ForeignKey("VeiculoFkId")]
+        // Chave estrangeira para Veiculo
+        public long VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
-         
 
-        
     }
 }

@@ -4,7 +4,7 @@ namespace purrfect_olho_vivo_api.ViewModels.Responses
 {
     public class VeiculoUpdateResponse
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string Name { get; set; }
 

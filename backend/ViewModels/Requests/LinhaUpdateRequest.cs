@@ -2,8 +2,10 @@
 
 namespace purrfect_olho_vivo_api.ViewModels.Requests
 {
-    public class LinhaCreateRequest
+    public class LinhaUpdateRequest
     {
+        public long Id { get; set; }
+
         public string Name { get; set; }
 
         public List<long> Paradas { get; set; }

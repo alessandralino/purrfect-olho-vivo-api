@@ -64,7 +64,7 @@ namespace purrfect_olho_vivo_api.Controllers
             {
                 Name = request.Name,
                 Modelo = request.Modelo,   
-                LinhaFkId = request.linhaId
+                //LinhaFkId = request.linhaId
             };
 
             _context.Veiculo.Add(veiculo); 

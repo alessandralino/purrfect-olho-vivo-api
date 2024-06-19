@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
+using purrfect_olho_vivo_api.ViewModels.Responses;
+using System.Collections.Immutable;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -19,17 +23,30 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Linha>>> GetAll()
+        public async Task<ActionResult<LinhaGetAllResponse>> GetAll()
         {
-            return _context.Linhas
-                       .Include(l => l.Paradas)
-                       .ToList();
+            var linhas = _context.Linha.Include(l => l.Paradas).ToList();
+
+            var options = linhas.Select(l => new LinhaGetAllResponse
+            {
+                Id = l.Id,
+                Name = l.Name,
+                Paradas = l.Paradas.Select(p => new Parada
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Latitude = p.Latitude,
+                    Longitude = p.Longitude
+                }).ToList()
+            }).ToList();
+
+            return Ok(options);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Linha>> GetLinha(int id)
         {
-            var linha =  _context.Linhas
+            var linha =  _context.Linha
                        .Include(l => l.Paradas)
                        .SingleOrDefault(l => l.Id == id);
 
@@ -51,37 +68,49 @@ namespace purrfect_olho_vivo_api.Controllers
             };
 
             foreach (var paradaRequest in request.Paradas)
-            { 
+            {
                 var existingParada = await _context.Parada
-                    .FirstOrDefaultAsync(p => p.Id == paradaRequest.Id);
+                    .FirstOrDefaultAsync(p => p.Id == paradaRequest);
 
                 if (existingParada != null)
-                { 
+                {
                     linha.Paradas.Add(existingParada);
-                } 
+                }
                 else
-                { 
-                    ModelState.AddModelError("Paradas", $"A parada '{paradaRequest.Name}' não foi encontrada no sistema.");
-                    return BadRequest(ModelState);
+                {
+                    return BadRequest($"A parada '{paradaRequest}' não foi encontrada no sistema.");
                 }
             }
 
-            _context.Linhas.Add(linha);
+            _context.Linha.Add(linha);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetAll), new { id = linha.Id }, linha);
         }
 
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Linha linha)
+        public async Task<ActionResult<Linha>> Update(int id, LinhaUpdateRequest linhaUpdateRequest)
         {
-            if (id != linha.Id)
+            if (id != linhaUpdateRequest.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(linha).State = EntityState.Modified;
+            var linha = await _context.Linha.Include(l => l.Paradas).FirstOrDefaultAsync(l => l.Id == id);
+
+            if (linha == null)
+            {
+                return NotFound();
+            }
+
+            linha.Name = linhaUpdateRequest.Name;
+
+            var paradas = await _context.Parada.Where(p => linhaUpdateRequest.Paradas.Contains(p.Id)).ToListAsync();
+            linha.Paradas.Clear();
+            foreach (var parada in paradas)
+            {
+                linha.Paradas.Add(parada);
+            }
 
             try
             {
@@ -89,7 +118,7 @@ namespace purrfect_olho_vivo_api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LinhaExists(id))
+                if (!_context.Linha.Any(e => e.Id == id))
                 {
                     return NotFound();
                 }
@@ -99,28 +128,46 @@ namespace purrfect_olho_vivo_api.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(linha);
         }
 
-        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLinha(int id)
         {
-            var linha = await _context.Linhas.FindAsync(id);
+            var linha = await _context.Linha.FindAsync(id);
             if (linha == null)
             {
                 return NotFound();
             }
 
-            _context.Linhas.Remove(linha);
+            _context.Linha.Remove(linha);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
+        /*Linhas por Parada: Recebe o identificador de uma parada e retorna as linhas associadas a parada informada*/
+
+        [HttpGet("parada/{idParada}")]
+        public async Task<ActionResult<IEnumerable<Linha>>> GetLinhaPorParada(int idParada)
+        {
+            var linhas = await _context.Linha
+                .Include(l => l.Paradas)
+                .Where(l => l.Paradas.Any(p => p.Id == idParada))
+                .ToListAsync();
+
+            if (linhas == null || !linhas.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(linhas);
+        }
+
+
         private bool LinhaExists(int id)
         {
-            return _context.Linhas.Any(e => e.Id == id);
+            return _context.Linha.Any(e => e.Id == id);
         }
     }
 }
