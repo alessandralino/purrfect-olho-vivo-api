@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\services\\veiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:services\\veiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\models\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:models\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:controllers\\veiculocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\interfaces\\iveiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:interfaces\\iveiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\services\\veiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:services\\veiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\models\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:models\\requests\\veiculocreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\interfaces\\iveiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|solutionrelative:interfaces\\iveiculoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{89622569-BD31-4424-9DB6-625CBD4B06A0}|purrfect-olho-vivo-api.csproj|c:\\users\\aleli\\onedrive\\documentos\\purrfect\\purrfect-olho-vivo-api\\backend\\models\\requests\\veiculoupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "VeiculoService.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Services\\VeiculoService.cs",
               "RelativeDocumentMoniker": "Services\\VeiculoService.cs",
@@ -61,6 +61,10 @@
               "WhenOpened": "2024-06-20T12:49:35.7Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -77,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "VeiculoCreateRequest.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Models\\Requests\\VeiculoCreateRequest.cs",
               "RelativeDocumentMoniker": "Models\\Requests\\VeiculoCreateRequest.cs",
@@ -96,14 +100,14 @@
               "RelativeDocumentMoniker": "Controllers\\VeiculoController.cs",
               "ToolTip": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Controllers\\VeiculoController.cs",
               "RelativeToolTip": "Controllers\\VeiculoController.cs",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAqwHIAAAAQAAAA",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAkwAMAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T12:54:52.961Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IVeiculoService.cs",
               "DocumentMoniker": "C:\\Users\\aleli\\OneDrive\\Documentos\\Purrfect\\purrfect-olho-vivo-api\\backend\\Interfaces\\IVeiculoService.cs",
               "RelativeDocumentMoniker": "Interfaces\\IVeiculoService.cs",

@@ -1,8 +1,6 @@
 ﻿ 
 using Microsoft.AspNetCore.Mvc;
-using purrfect_olho_vivo_api.ViewModels.Responses;
-using Microsoft.EntityFrameworkCore;
-using purrfect_olho_vivo_api.Context;
+using purrfect_olho_vivo_api.ViewModels.Responses; 
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.Interfaces;

@@ -743,8 +743,6 @@ C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\D
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.csproj.CoreCompileInputs.cache
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.RazorAssemblyInfo.cache
-C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.RazorAssemblyInfo.cs
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\purrfect-olho-vivo-api.sourcelink.json
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend\obj\Debug\net8.0\staticwebassets.development.json

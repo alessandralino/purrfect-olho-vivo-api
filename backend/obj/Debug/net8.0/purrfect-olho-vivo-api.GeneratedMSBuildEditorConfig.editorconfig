@@ -25,27 +25,3 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\aleli\OneDrive\Documentos\Purrfect\purrfect-olho-vivo-api\backend
 build_property._RazorSourceGeneratorDebug = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Veiculo/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Veiculo/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Veiculo/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Veiculo/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/aleli/OneDrive/Documentos/Purrfect/purrfect-olho-vivo-api/backend/Views/Veiculo/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVpY3Vsb1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
