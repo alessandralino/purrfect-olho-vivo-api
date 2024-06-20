@@ -14,6 +14,7 @@ namespace purrfect_olho_vivo_api.Configuration
 
             services.AddScoped<ILinhaService, LinhaService>();
             services.AddScoped<IParadaService, ParadaService>();
+            services.AddScoped<IVeiculoService, VeiculoService>();
 
             return services;
         }

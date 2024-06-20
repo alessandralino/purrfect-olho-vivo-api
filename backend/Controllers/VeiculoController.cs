@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
+using purrfect_olho_vivo_api.Interfaces;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -12,78 +13,57 @@ namespace purrfect_olho_vivo_api.Controllers
     [ApiController]
     public class VeiculoController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IVeiculoService _veiculoService;
 
-        public VeiculoController(AppDbContext context)
+
+        public VeiculoController(IVeiculoService veiculoService)
         {
-            _context = context;
+            _veiculoService = veiculoService;  
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VeiculoGetAllResponse>>> GetAll()
         {
-            var lista = await _context.Veiculo
-                .Include(v => v.Linha)
-                .ThenInclude(l => l.Paradas)
-                .ToListAsync();
+            var responseList = await _veiculoService.GetAll();
 
-            var responseList = lista.Select(v => new VeiculoGetAllResponse
+            if (responseList == null || !responseList.Any())
             {
-                Id = v.Id,
-                Name = v.Name,
-                Modelo = v.Modelo,
-                Linha = new Linha
-                {
-                    Id = v.Linha.Id,
-                    Name = v.Linha.Name,
-                    Paradas = v.Linha.Paradas.Select(p => new Parada
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                        Latitude = p.Latitude,
-                        Longitude = p.Longitude,
-                    }).ToList()
-                }
-            }).ToList();
+                return NotFound();
+            }
 
             return Ok(responseList);
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Veiculo>> GetVeiculoById(int id)
-        {
-            var veiculo = await _context.Veiculo.FindAsync(id);
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Veiculo>> GetVeiculoById(long id)
+        {
+            try
+            {
+                var veiculoWithLinha = await _veiculoService.GetVeiculoById(id);
+
+                return veiculoWithLinha;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound();
+            }
+        }
+         
+
+        [HttpGet("veiculo/{idLinha}")]
+        public async Task<ActionResult<Veiculo>> GetVeiculoByLinha(int idLinha)
+        {
+            var veiculo = await _veiculoService.GetVeiculoByLinha(idLinha);
+
+            
             if (veiculo == null)
             {
                 return NotFound();
             }
 
-            var veiculoWithLinha = await _context.Veiculo
-            .Include(v => v.Linha)
-            .FirstOrDefaultAsync(v => v.Id == veiculo.Id); 
-
-            return veiculoWithLinha;
-        }
-
-        //Veiculos por Linha:
-        //Recebe o identificador de uma linha e retorna os veículos associados a linha informada
-        [HttpGet("veiculo/{idLinha}")]
-        public async Task<ActionResult<Veiculo>> GetVeiculoByLinha(int idLinha)
-        {
-            var veiculos = await _context.Veiculo 
-                .Where(v => v.LinhaId == idLinha)
-                .ToListAsync();
-
-            // Verifica se foram encontrados veículos para a linha especificada
-            if (veiculos == null || !veiculos.Any())
-            {
-                return NotFound();
-            }
-
-            // Retorna a lista de veículos associados à linha especificada
-            return Ok(veiculos);
+            return Ok(veiculo);
         }
 
 
@@ -93,44 +73,22 @@ namespace purrfect_olho_vivo_api.Controllers
             var veiculo = new Veiculo
             {
                 Name = request.Name,
-                Modelo = request.Modelo,   
+                Modelo = request.Modelo,
                 LinhaId = request.linhaId
             };
 
-            _context.Veiculo.Add(veiculo); 
+            VeiculoCreateResponse veiculoResponse = new VeiculoCreateResponse();
 
-            await _context.SaveChangesAsync();
-
-            var veiculoWithLinha = await _context.Veiculo
-           .Include(v => v.Linha)
-           .ThenInclude(l => l.Paradas)
-           .FirstOrDefaultAsync(v => v.Id == veiculo.Id);
-
-            if (veiculoWithLinha == null)
+            try
             {
-                return NotFound();
+                veiculoResponse = await _veiculoService.Create(request);
+
             }
-
-            var veiculoResponse = new VeiculoCreateResponse
+            catch (KeyNotFoundException ex)
             {
-                Id = veiculoWithLinha.Id,
-                Name = veiculoWithLinha.Name,
-                Modelo = veiculoWithLinha.Modelo,
-                Linha = new Linha
-                {
-                    Id = veiculoWithLinha.Linha.Id,
-                    Name = veiculoWithLinha.Linha.Name,
-                    Paradas = veiculoWithLinha.Linha.Paradas.Select(p => new Parada
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                        Latitude = p.Latitude,
-                        Longitude = p.Longitude,
-                    }).ToList()
-                }
-            };
-  
 
+                return BadRequest(ex.Message);
+            } 
 
             return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoResponse);
         }
@@ -139,74 +97,38 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var veiculo = await _context.Veiculo.FindAsync(id);
-            if (veiculo == null)
+            var success = await _veiculoService.Delete(id);
+            
+            if (success)
             {
                 return NotFound();
             }
-
-            _context.Veiculo.Remove(veiculo);
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<VeiculoUpdateResponse>> Update(int id, Veiculo veiculo)
+        public async Task<ActionResult<VeiculoUpdateResponse>> Update(long id, VeiculoUpdateRequest request)
         {
-            if (id != veiculo.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(veiculo).State = EntityState.Modified;
-
-            var veiculoResponse = new VeiculoUpdateResponse();
-
             try
             {
-                await _context.SaveChangesAsync();
+                var veiculoResponse = await _veiculoService.Update(id, request);
 
-                var veiculoWithLinha = await _context.Veiculo
-           .Include(v => v.Linha)
-           .FirstOrDefaultAsync(v => v.Id == veiculo.Id);
-
-                if (veiculoWithLinha == null)
-                {
-                    return NotFound();
-                }
-
-                veiculoResponse = new VeiculoUpdateResponse
-                {
-                    Id = veiculoWithLinha.Id,
-                    Name = veiculoWithLinha.Name,
-                    Modelo = veiculoWithLinha.Modelo,
-                    Linha = new Linha
-                    {
-                        Id = veiculoWithLinha.Linha.Id,
-                        Name = veiculoWithLinha.Linha.Name,
-                    }
-                };
+                return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculoResponse.Id }, veiculoResponse);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (ArgumentException)
             {
-                if (!VeiculoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("ID do veículo não corresponde ao ID fornecido.");
             }
-
-            return CreatedAtAction(nameof(GetVeiculoById), new { id = veiculo.Id }, veiculoResponse);
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno: {ex.Message}");
+            }
         }
-
-
-        private bool VeiculoExists(int id)
-        {
-            return _context.Veiculo.Any(e => e.Id == id);
-        }
+         
     }
 }

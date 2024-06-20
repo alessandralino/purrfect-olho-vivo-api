@@ -57,8 +57,7 @@ namespace purrfect_olho_vivo_api.Services
 
         public async Task<ActionResult<Parada>> GetParadaById(long id)
         {
-            var parada = await _context.Parada
-                .FindAsync(id);
+            var parada = await _context.Parada.FindAsync(id);
 
             if (parada == null)
             {

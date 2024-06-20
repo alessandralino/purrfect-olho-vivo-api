@@ -2,11 +2,12 @@
 
 namespace purrfect_olho_vivo_api.ViewModels.Requests
 {
-    public class VeiculoCreateRequest
+    public class VeiculoUpdateRequest
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Modelo { get; set; }
-        public long linhaId { get; set; }
+        public long LinhaId { get; set; }
 
     }
 }
