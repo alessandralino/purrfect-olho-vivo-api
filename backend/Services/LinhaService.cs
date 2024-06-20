@@ -3,8 +3,10 @@ using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
+using purrfect_olho_vivo_api.Interfaces;
 
 namespace purrfect_olho_vivo_api.Services
+
 {
     public class LinhaService : ILinhaService
     {
@@ -15,7 +17,7 @@ namespace purrfect_olho_vivo_api.Services
             _context = context;
         }
 
-        public async Task<Linha> CreateLinha(LinhaCreateRequest request)
+        public async Task<Linha> Create(LinhaCreateRequest request)
         {
             var linha = new Linha
             {
@@ -39,21 +41,25 @@ namespace purrfect_olho_vivo_api.Services
             }
 
             _context.Linha.Add(linha);
+
             await _context.SaveChangesAsync();
 
             return linha;
         }
 
-        public async Task<bool> DeleteLinha(long id)
+        public async Task<bool> Delete(long id)
         {
             var linha = await _context.Linha.FindAsync(id);
+
             if (linha == null)
             {
                 return false;
             }
 
             _context.Linha.Remove(linha);
+
             await _context.SaveChangesAsync();
+
             return true;
         }
 
@@ -104,7 +110,7 @@ namespace purrfect_olho_vivo_api.Services
                 .ToListAsync();
         }
 
-        public async Task<Linha> UpdateLinha(int id, LinhaUpdateRequest request)
+        public async Task<Linha> Update(int id, LinhaUpdateRequest request)
         {
             if (id != request.Id)
             {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
-using purrfect_olho_vivo_api.Services;
-using System.Diagnostics.CodeAnalysis;
+using purrfect_olho_vivo_api.Services; 
+using purrfect_olho_vivo_api.Interfaces;
 
 namespace purrfect_olho_vivo_api.Configuration
 {
@@ -13,6 +13,7 @@ namespace purrfect_olho_vivo_api.Configuration
                 options.UseSqlServer(configuration.GetConnectionString("DBContext")));
 
             services.AddScoped<ILinhaService, LinhaService>();
+            services.AddScoped<IParadaService, ParadaService>();
 
             return services;
         }

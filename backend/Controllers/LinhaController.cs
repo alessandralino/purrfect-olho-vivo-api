@@ -5,11 +5,7 @@ using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
-using System.Collections.Immutable;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using purrfect_olho_vivo_api.Services;
-using Azure.Core;
+using purrfect_olho_vivo_api.Interfaces;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -50,7 +46,7 @@ namespace purrfect_olho_vivo_api.Controllers
         {
             try
             {
-                var linha = await _linhaService.CreateLinha(request);
+                var linha = await _linhaService.Create(request);
 
                 return CreatedAtAction(nameof(GetAll), new { id = linha.Id }, linha);
             }
@@ -65,7 +61,7 @@ namespace purrfect_olho_vivo_api.Controllers
         {
             try
             {
-                var linha = await _linhaService.UpdateLinha(id, request);
+                var linha = await _linhaService.Update(id, request);
 
                 return Ok(linha);
             }
@@ -80,13 +76,15 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLinha(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var success = await _linhaService.DeleteLinha(id);
+            var success = await _linhaService.Delete(id);
+
             if (!success)
             {
                 return NotFound();
             }
+
             return NoContent();
         }
 

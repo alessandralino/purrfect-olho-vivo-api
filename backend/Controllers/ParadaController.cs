@@ -4,6 +4,7 @@ using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
+using purrfect_olho_vivo_api.Interfaces;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -11,61 +12,62 @@ namespace purrfect_olho_vivo_api.Controllers
     [ApiController]
     public class ParadaController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IParadaService _paradaService;
 
-        public ParadaController (AppDbContext context)
+        public ParadaController (IParadaService paradaService)
         {
-            _context = context;
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Parada>> GetParadaById(int id)
-        {
-            var parada = await _context.Parada.FindAsync(id);
-
-            if (parada == null)
-            {
-                return NotFound();
-            } 
-
-            return parada;
+            _paradaService = paradaService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Parada>>> GetAll()
         {
-            return _context.Parada.ToList();
+            var paradas = await _paradaService.GetAll();
+
+            return Ok(paradas);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Parada>> GetParadaById(long id)
+        {
+            var parada = await _paradaService.GetParadaById(id);     
+
+            if (parada == null)
+            {
+                return NotFound();
+            }
+
+            return parada; 
         }
 
         [HttpPost]
         public async Task<ActionResult<Parada>> Create(ParadaCreateRequest request)
-        {
-            var parada = new Parada
-            {    
-                Name = request.Name,
-                Latitude = request.Latitude,   
-                Longitude = request.Longitude,                                                              
-            };
-            
-            _context.Parada.Add(parada);
-            _context.SaveChanges(); 
-            
-            return Ok(parada);
+        { 
+            try
+            {
+                var parada = await _paradaService.Create(request);
+
+                return Ok(parada);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("posicao")]
-        public async Task<ActionResult<IEnumerable<Parada>>> GetParadaByPosicao(ParadaGetByPosicaoRequest request)
-        {
-            var paradas = _context.Parada
-                .Where((p => p.Latitude == request.latitude && p.Latitude == request.latitude))
-                .ToList();
-
-            if (paradas == null || !paradas.Any())
+        public async Task<ActionResult<Parada>> GetParadaByPosicao(ParadaGetByPosicaoRequest request)
+        { 
+            try
             {
-                return BadRequest();
-            }
+                var paradas = await _paradaService.GetParadaByPosicao(request);
 
-            return Ok(paradas);
+                return Ok(paradas);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
@@ -73,36 +75,26 @@ namespace purrfect_olho_vivo_api.Controllers
         {
             if (id != parada.Id)
             {
-                return BadRequest();
+                return BadRequest("ID desconhecido. Informe um ID igual ao da Parada desejada.");
             }
-
-            var veiculoResponse = new ParadaUpdateResponse();
 
             try
             {
-                _context.Entry(parada).State = EntityState.Modified;
+                var paradaResponse = await _paradaService.Update(id, parada);
 
-                await _context.SaveChangesAsync();
-
-                var paradaAtualizada = await _context.Parada.FirstOrDefaultAsync(v => v.Id == parada.Id);
-
-                if (paradaAtualizada == null)
-                {
-                    return NotFound();
-                }
-
-                veiculoResponse = new ParadaUpdateResponse()
-                {
-                    Id = paradaAtualizada.Id,
-                    Latitude = paradaAtualizada.Latitude,
-                    Longitude = paradaAtualizada.Longitude,
-                    Name = paradaAtualizada.Name
-                };
-
+                return Ok(paradaResponse);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ParadaExists(id))
+                if (!_paradaService.ParadaExists(id))
                 {
                     return NotFound();
                 }
@@ -111,29 +103,20 @@ namespace purrfect_olho_vivo_api.Controllers
                     throw;
                 }
             }
-
-            return Ok(veiculoResponse);
         }
 
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var parada = await _context.Parada.FindAsync(id);
-            if (parada == null)
+            var success = await  _paradaService.Delete(id);
+
+            if (!success)
             {
                 return NotFound();
             }
-
-            _context.Parada.Remove(parada);
-            await _context.SaveChangesAsync();
-
+             
             return NoContent();
-        }
-         
-        private bool ParadaExists(int id)
-        {
-            return _context.Parada.Any(e => e.Id == id);
         }
     }
 }
