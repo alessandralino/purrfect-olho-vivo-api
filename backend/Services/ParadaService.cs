@@ -70,7 +70,7 @@ namespace purrfect_olho_vivo_api.Services
         public async Task<IEnumerable<Parada>> GetParadaByPosicao(ParadaGetByPosicaoRequest request)
         {
             var paradas = await _context.Parada
-                .Where((p => p.Latitude == request.latitude && p.Latitude == request.latitude))
+                .Where((p => p.Latitude == request.latitude && p.Longitude == request.longitude))
                 .ToListAsync();
 
             if (paradas == null || !paradas.Any())

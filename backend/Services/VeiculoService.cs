@@ -30,7 +30,7 @@ namespace purrfect_olho_vivo_api.Services
                 throw new Exception("Veículo não encontrado após criação");
             }
 
-            return MapearParaVeiculoCreateResponse(veiculoWithLinha);
+            return formatarVeiculoCreateResponse(veiculoWithLinha);
 
         }
 
@@ -56,7 +56,7 @@ namespace purrfect_olho_vivo_api.Services
                 .FirstOrDefaultAsync(v => v.Id == veiculoId);
         }
 
-        private VeiculoCreateResponse MapearParaVeiculoCreateResponse(Veiculo veiculoWithLinha)
+        private VeiculoCreateResponse formatarVeiculoCreateResponse(Veiculo veiculoWithLinha)
         {
             return new VeiculoCreateResponse
             {
@@ -101,7 +101,14 @@ namespace purrfect_olho_vivo_api.Services
                 .ThenInclude(p => p.Paradas)
                 .ToListAsync();
 
-            var responseList = lista.Select(v => new VeiculoGetAllResponse
+            List<VeiculoGetAllResponse> responseList = formatarGetAllResponse (lista);
+
+            return responseList;
+        }
+
+        private static List<VeiculoGetAllResponse> formatarGetAllResponse(List<Veiculo> lista)
+        {
+            return lista.Select(v => new VeiculoGetAllResponse
             {
                 Id = v.Id,
                 Name = v.Name,
@@ -119,8 +126,6 @@ namespace purrfect_olho_vivo_api.Services
                     }).ToList()
                 }
             }).ToList();
-
-            return responseList;
         }
 
         public async Task<ActionResult<Veiculo>> GetVeiculoById(long id)
@@ -184,24 +189,7 @@ namespace purrfect_olho_vivo_api.Services
                     throw new KeyNotFoundException("Veículo não encontrado após atualização.");
                 }
 
-                veiculoResponse = new VeiculoUpdateResponse
-                {
-                    Id = veiculoWithLinha.Id,
-                    Name = veiculoWithLinha.Name,
-                    Modelo = veiculoWithLinha.Modelo,
-                    Linha = new Linha
-                    {
-                        Id = veiculoWithLinha.Linha.Id,
-                        Name = veiculoWithLinha.Linha.Name,
-                        Paradas = veiculoWithLinha.Linha.Paradas.Select(p => new Parada
-                        {
-                            Id = p.Id,
-                            Name = p.Name,
-                            Latitude = p.Latitude,
-                            Longitude = p.Longitude,
-                        }).ToList()
-                    }
-                };
+                veiculoResponse = formatarUpdateResponse (veiculoWithLinha);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -217,6 +205,28 @@ namespace purrfect_olho_vivo_api.Services
 
             return veiculoResponse;
             
+        }
+
+        private static VeiculoUpdateResponse formatarUpdateResponse(Veiculo? veiculoWithLinha)
+        {
+            return new VeiculoUpdateResponse
+            {
+                Id = veiculoWithLinha.Id,
+                Name = veiculoWithLinha.Name,
+                Modelo = veiculoWithLinha.Modelo,
+                Linha = new Linha
+                {
+                    Id = veiculoWithLinha.Linha.Id,
+                    Name = veiculoWithLinha.Linha.Name,
+                    Paradas = veiculoWithLinha.Linha.Paradas.Select(p => new Parada
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Latitude = p.Latitude,
+                        Longitude = p.Longitude,
+                    }).ToList()
+                }
+            };
         }
 
         private bool VeiculoExists(long id)
