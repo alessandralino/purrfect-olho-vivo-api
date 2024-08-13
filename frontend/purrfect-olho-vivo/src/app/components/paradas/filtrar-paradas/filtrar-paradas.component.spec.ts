@@ -8,12 +8,10 @@ describe('FiltrarParadasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FiltrarParadasComponent ]
+      imports: [FiltrarParadasComponent]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(FiltrarParadasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

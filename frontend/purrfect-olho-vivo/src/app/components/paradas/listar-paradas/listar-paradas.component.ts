@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-listar-paradas',
+  standalone: true,
+  imports: [],
   templateUrl: './listar-paradas.component.html',
-  styleUrls: ['./listar-paradas.component.scss']
+  styleUrl: './listar-paradas.component.css'
 })
-export class ListarParadasComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ListarParadasComponent {
 
 }

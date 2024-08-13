@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-filtrar-paradas',
+  standalone: true,
+  imports: [],
   templateUrl: './filtrar-paradas.component.html',
-  styleUrls: ['./filtrar-paradas.component.scss']
+  styleUrl: './filtrar-paradas.component.css'
 })
-export class FiltrarParadasComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class FiltrarParadasComponent {
 
 }

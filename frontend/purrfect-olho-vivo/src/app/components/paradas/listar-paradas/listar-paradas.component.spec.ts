@@ -8,12 +8,10 @@ describe('ListarParadasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListarParadasComponent ]
+      imports: [ListarParadasComponent]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ListarParadasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
