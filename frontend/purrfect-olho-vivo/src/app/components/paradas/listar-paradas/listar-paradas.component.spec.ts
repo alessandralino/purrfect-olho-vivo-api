@@ -8,7 +8,7 @@ describe('ListarParadasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListarParadasComponent]
+      declarations: [ListarParadasComponent]
     })
     .compileComponents();
 

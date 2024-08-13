@@ -5,7 +5,17 @@
   "projects": {
     "purrfect-olho-vivo": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -94,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "27e40015-dbc6-4b9c-8c4f-264bcfe92e6e"
+    "analytics": "35c4b114-b669-472e-9307-b9e20373735f"
   }
 }

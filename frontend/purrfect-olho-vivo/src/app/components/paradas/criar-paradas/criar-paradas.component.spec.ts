@@ -8,7 +8,7 @@ describe('CriarParadasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CriarParadasComponent]
+      declarations: [CriarParadasComponent]
     })
     .compileComponents();
 
