@@ -1,0 +1,27 @@
+ <h1 class="text-left mb-4">Paradas</h1>
+  
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+           <th>Número</th> 
+           <th>Nome</th> 
+           <th>Latitude</th> 
+           <th>Longitude</th> 
+           <th>Ações</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parada of listaParadas">
+          <td>{{ parada.id }}</td>
+          <td>{{ parada.name }}</td>
+          <td>{{ parada.latitude }}</td>
+          <td>{{ parada.longitude }}</td>
+          <td>
+            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-danger">Excluir</button>
+            <button class="btn btn-info">Visualizar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
