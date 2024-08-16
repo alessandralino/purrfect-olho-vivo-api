@@ -1,7 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using purrfect_olho_vivo_api.Configuration;
-using purrfect_olho_vivo_api.Context;
-using purrfect_olho_vivo_api.Services;
+ using purrfect_olho_vivo_api.Configuration; 
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -15,6 +12,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configurar CORS
+builder.Services.AddCustomCors();
 
 var app = builder.Build();
 
