@@ -9,7 +9,7 @@
                 options.AddPolicy("AllowLocalhost",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")  
+                        builder.WithOrigins("http://localhost:4200") // URL do seu frontend
                                .AllowAnyHeader()
                                .AllowAnyMethod();
                     });

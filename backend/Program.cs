@@ -1,15 +1,15 @@
- using purrfect_olho_vivo_api.Configuration; 
+ 
+using purrfect_olho_vivo_api.Configuration; 
 
 var builder = WebApplication.CreateBuilder(args);
- 
-// Add dbcontext to the container
+
+// Adicionar DbContexts ao contêiner
 builder.Services.AddDbContexts(builder.Configuration);
 
-// Add services to the container.
-
-// Add services to the container.
+// Adicionar serviços ao contêiner
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configurar Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -18,15 +18,19 @@ builder.Services.AddCustomCors();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors("AllowLocalhost");
+
+// Configurar o pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Aplicar CORS antes de outros middlewares
+app.UseCors("AllowLocalhost"); // Assegure-se de que o nome da política está correto
 
+app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
