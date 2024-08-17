@@ -1,1 +1,41 @@
-<p>filtrar-paradas works!</p>
+<div class="topo-container">
+    <h1 class="text-left">Paradas</h1>
+    <span class="text-left">Informe filtros para encontrar uma ou mais Paradas</span>
+</div> 
+
+<!-- Campo de Input para Filtrar -->
+<div class="mb-4">
+  <label for="filtroNumero">Número:</label>
+  <input id="filtroNumero"
+        class="form-control" 
+        type="text" 
+        [(ngModel)]="paradaFiltro.id" 
+        placeholder="Digite o número da parada">
+    
+    <label for="filtroNome">Nome:</label>
+    <input id="filtroNome"
+            class="form-control" 
+            type="text" 
+            [(ngModel)]="paradaFiltro.nome" 
+            placeholder="Digite o nome da parada">
+
+    <label for="filtroLatitude">Latitude:</label>
+    <input id="filtroLatitude"
+            class="form-control" 
+            type="text" 
+            [(ngModel)]="paradaFiltro.latitude" 
+            placeholder="Digite a latitude da parada"> 
+            
+    <label for="filtroLongitude">Longitude:</label>
+    <input id="filtroLongitude"
+            class="form-control" 
+            type="text" 
+            [(ngModel)]="paradaFiltro.longitude" 
+            placeholder="Digite a longitude da parada">             
+</div>
+<div class="botaoFiltrar"> 
+        <button type="button" class="btn btn-dark btn-lg btn-block form-control" 
+                (click)="filtrarParadas()">
+                Filtrar
+        </button>
+</div>

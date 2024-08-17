@@ -19,11 +19,18 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Parada>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Parada>>> GetAll([FromQuery] ParadaGetRequest request)
         {
-            var paradas = await _paradaService.GetAll();
+            try
+            {
+                var paradas = await _paradaService.GetAll(request);
 
-            return Ok(paradas);
+                return Ok(paradas);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}")]

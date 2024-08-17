@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParadaService } from '../../../api/services/parada/parada.service';
-import { ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model';
+import { ParadaFiltro, ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model';
 
 @Component({
   selector: 'app-listar-paradas',
@@ -16,10 +16,19 @@ export class ListarParadasComponent implements OnInit{
     this.getAllParadas();
   }
 
-  getAllParadas(){
-    this.paradaService.getAllParadas().subscribe(data => { 
-      console.log("Lista de Paradas:", data);
-      this.listaParadas = data;
-     });
+  getAllParadas(filter?: ParadaFiltro) {
+    this.paradaService.getAllParadas(filter).subscribe(
+      data => {
+        this.listaParadas = data;
+      },
+      error => {
+        console.error('Erro ao carregar as paradas', error);
+        this.listaParadas = [];   
+      }
+    );
+  }
+ 
+  onFilterApplied(filter: ParadaFiltro) {
+    this.getAllParadas(filter);
   }
 }

@@ -50,10 +50,40 @@ namespace purrfect_olho_vivo_api.Services
             return true;
         }
 
-        public async Task<IEnumerable<Parada>> GetAll()
+        public async Task<IEnumerable<Parada>> GetAll(ParadaGetRequest? request)
         {
-            return await _context.Parada.ToListAsync();
+            var query = _context.Parada.AsQueryable();
+
+            if (request?.Id.HasValue == true)
+            {
+                query = query.Where(p => p.Id == request.Id.Value);
+            }
+
+            if (!string.IsNullOrEmpty(request?.Name))
+            {
+                query = query.Where(p => p.Name.Contains(request.Name));
+            }
+
+            if (request?.Latitude.HasValue == true)
+            {
+                query = query.Where(p => p.Latitude == request.Latitude.Value);
+            }
+
+            if (request?.Longitude.HasValue == true)
+            {
+                query = query.Where(p => p.Longitude == request.Longitude.Value);
+            }
+
+            var paradas = await query.ToListAsync();
+
+            if (paradas == null || !paradas.Any())
+            {
+                throw new KeyNotFoundException("Nenhuma parada encontrada.");
+            }
+
+            return paradas;
         }
+
 
         public async Task<ActionResult<Parada>> GetParadaById(long id)
         {
