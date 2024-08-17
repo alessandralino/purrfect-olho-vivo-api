@@ -19,9 +19,9 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Parada>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Parada>>> GetAll([FromQuery] ParadaGetRequest request)
         {
-            var paradas = await _paradaService.GetAll();
+            var paradas = await _paradaService.GetAll(request);
 
             return Ok(paradas);
         }

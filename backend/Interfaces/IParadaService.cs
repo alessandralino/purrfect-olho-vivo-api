@@ -7,7 +7,7 @@ namespace purrfect_olho_vivo_api.Interfaces
 {
     public interface IParadaService
     {
-        Task<IEnumerable<Parada>> GetAll();
+        Task<IEnumerable<Parada>> GetAll(ParadaGetRequest? request);
         Task<ActionResult<Parada>> GetParadaById(long id);
         Task<IEnumerable<Parada>> GetParadaByPosicao(ParadaGetByPosicaoRequest request);
         Task<Parada> Create(ParadaCreateRequest request);        
