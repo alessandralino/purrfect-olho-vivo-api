@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { ListarVeiculosComponent } from './pages/veiculos/listar-veiculos/listar
 import { ListarLinhasComponent } from './pages/linhas/listar-linhas/listar-linhas.component';
 import { ListarPosicaoVeiculosComponent } from './pages/posicao-veiculos/listar-posicao-veiculos/listar-posicao-veiculos.component';
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule
   ],

@@ -29,7 +29,7 @@ namespace purrfect_olho_vivo_api.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound();
             }
         }
 

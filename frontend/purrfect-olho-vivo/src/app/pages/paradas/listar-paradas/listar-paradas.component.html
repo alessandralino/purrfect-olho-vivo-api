@@ -1,29 +1,31 @@
-<app-filtrar-paradas></app-filtrar-paradas>
+<app-filtrar-paradas (onFilterApplied)="onFilterApplied($event)"></app-filtrar-paradas> 
 
-<h1 class="text-left mb-4">Paradas</h1>
-  
-  <table class="table table-bordered">
-      <thead>
-        <tr>
-           <th>Número</th> 
-           <th>Nome</th> 
-           <th>Latitude</th> 
-           <th>Longitude</th> 
-           <th>Ações</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let parada of listaParadas">
-          <td>{{ parada.id }}</td>
-          <td>{{ parada.name }}</td>
-          <td>{{ parada.latitude }}</td>
-          <td>{{ parada.longitude }}</td>
-          <td>
-            <button class="btn btn-warning">Editar</button>
-            <button class="btn btn-danger">Excluir</button>
-            <button class="btn btn-info">Visualizar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Número</th> 
+      <th>Nome</th> 
+      <th>Latitude</th> 
+      <th>Longitude</th> 
+      <th>Ações</th> 
+    </tr>
+  </thead>
+  <tbody>
     
+    <tr *ngIf="listaParadas && listaParadas.length === 0">
+      <td colspan="5" class="no-records">Nenhum registro encontrado.</td>
+    </tr>
+    
+    <tr *ngFor="let parada of listaParadas">
+      <td>{{ parada.id }}</td>
+      <td>{{ parada.name }}</td>
+      <td>{{ parada.latitude }}</td>
+      <td>{{ parada.longitude }}</td>
+      <td>
+        <button class="btn btn-warning">Editar</button>
+        <button class="btn btn-danger">Excluir</button>
+        <button class="btn btn-info">Visualizar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
