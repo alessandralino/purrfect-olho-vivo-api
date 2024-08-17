@@ -6,6 +6,7 @@ using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
 using purrfect_olho_vivo_api.Interfaces;
+using purrfect_olho_vivo_api.Services;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -21,11 +22,18 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<LinhaGetAllResponse>> GetAll()
-        {
-            var response = await _linhaService.GetAll();
+        public async Task<ActionResult<LinhaGetAllResponse>> GetAll([FromQuery] LinhaGetRequest request)
+        { 
+            try
+            {
+                var response = await _linhaService.GetAll(request);
 
-            return Ok(response);
+                return Ok(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}")]

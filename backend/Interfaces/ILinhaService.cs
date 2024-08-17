@@ -6,7 +6,7 @@ namespace purrfect_olho_vivo_api.Interfaces
 {
     public interface ILinhaService
     {
-        Task<LinhaGetAllResponse> GetAll();
+        Task<LinhaGetAllResponse> GetAll(LinhaGetRequest request);
         Task<Linha> Create(LinhaCreateRequest request);
         Task<Linha> Update(int id, LinhaUpdateRequest request);
         Task<bool> Delete(long id);

@@ -63,29 +63,55 @@ namespace purrfect_olho_vivo_api.Services
             return true;
         }
 
-        public async Task<LinhaGetAllResponse> GetAll()
+        public async Task<LinhaGetAllResponse> GetAll(LinhaGetRequest request)
         {
-            var linhas = await _context.Linha.Include(l => l.Paradas).ToListAsync();
+            var query = _context.Linha.AsQueryable();
 
-            var options = linhas.Select(l => new LinhaResponse
+            if (request?.Id.HasValue == true)
             {
-                Id = l.Id,
-                Name = l.Name,
-                Paradas = l.Paradas.Select(p => new ParadaResponse
+                query = query.Where(p => p.Id == request.Id.Value);
+            }
+
+            if (!string.IsNullOrEmpty(request?.Name))
+            {
+                query = query.Where(p => p.Name.Contains(request.Name));
+            }
+
+            if (request?.IdParada.HasValue == true)
+            { 
+                query = query.Where(l => l.Paradas.Any(p => p.Id == request.IdParada.Value));
+            }
+
+            var linhas = await query.Include(l => l.Paradas).ToListAsync();
+
+
+            if (linhas.Count() > 0)
+            {
+                var options = linhas.Select(l => new LinhaResponse
                 {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Latitude = p.Latitude,
-                    Longitude = p.Longitude
-                }).ToList()
-            }).ToList();
+                    Id = l.Id,
+                    Name = l.Name,
+                    Paradas = l.Paradas.Select(p => new ParadaResponse
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Latitude = p.Latitude,
+                        Longitude = p.Longitude
+                    }).ToList()
+                }).ToList();
 
-            LinhaGetAllResponse resultado = new LinhaGetAllResponse
+                LinhaGetAllResponse resultado = new LinhaGetAllResponse
+                {
+                    Linhas = options
+                };
+
+                return resultado;
+            }
+            else
             {
-                Linhas = options
-            };
-
-            return resultado;
+                throw new KeyNotFoundException();
+            }
+           
         }
 
         public async Task<Linha> GetLinhaById(int id)

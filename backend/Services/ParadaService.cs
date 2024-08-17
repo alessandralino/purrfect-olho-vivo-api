@@ -59,7 +59,7 @@ namespace purrfect_olho_vivo_api.Services
                 query = query.Where(p => p.Id == request.Id.Value);
             }
 
-            if (!string.IsNullOrEmpty(request?.Name))
+var paradas = await query.ToListAsync();            if (!string.IsNullOrEmpty(request?.Name))
             {
                 query = query.Where(p => p.Name.Contains(request.Name));
             }
@@ -74,7 +74,7 @@ namespace purrfect_olho_vivo_api.Services
                 query = query.Where(p => p.Longitude == request.Longitude.Value);
             }
 
-            var paradas = await query.ToListAsync();
+            
 
             if (paradas == null || !paradas.Any())
             {
