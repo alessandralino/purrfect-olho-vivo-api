@@ -82,7 +82,10 @@ namespace purrfect_olho_vivo_api.Services
                 query = query.Where(l => l.Paradas.Any(p => p.Id == request.IdParada.Value));
             }
 
-            var linhas = await query.Include(l => l.Paradas).ToListAsync();
+            var linhas = await query
+                            .Include(l => l.Paradas)
+                            .AsNoTracking()
+                            .ToListAsync();
 
 
             if (linhas.Count() > 0)

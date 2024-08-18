@@ -20,9 +20,9 @@ namespace purrfect_olho_vivo_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<VeiculoGetAllResponse>>> GetAll()
+        public async Task<ActionResult<IEnumerable<VeiculoGetAllResponse>>> GetAll([FromQuery] VeiculoGetRequest request)
         {
-            var responseList = await _veiculoService.GetAll();
+            var responseList = await _veiculoService.GetAll(request);
 
             if (responseList == null || !responseList.Any())
             {

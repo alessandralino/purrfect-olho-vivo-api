@@ -7,6 +7,7 @@ using purrfect_olho_vivo_api.ViewModels.Responses;
 using Microsoft.EntityFrameworkCore;
 using Azure.Core;
 using System.Composition;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace purrfect_olho_vivo_api.Services
 {
@@ -57,9 +58,9 @@ namespace purrfect_olho_vivo_api.Services
             if (request?.Id.HasValue == true)
             {
                 query = query.Where(p => p.Id == request.Id.Value);
-            }
-
-var paradas = await query.ToListAsync();            if (!string.IsNullOrEmpty(request?.Name))
+            } 
+            
+            if (!string.IsNullOrEmpty(request?.Name))
             {
                 query = query.Where(p => p.Name.Contains(request.Name));
             }
@@ -73,8 +74,8 @@ var paradas = await query.ToListAsync();            if (!string.IsNullOrEmpty(re
             {
                 query = query.Where(p => p.Longitude == request.Longitude.Value);
             }
-
             
+            var paradas = await query.AsNoTracking().ToListAsync();
 
             if (paradas == null || !paradas.Any())
             {
@@ -87,7 +88,7 @@ var paradas = await query.ToListAsync();            if (!string.IsNullOrEmpty(re
 
         public async Task<ActionResult<Parada>> GetParadaById(long id)
         {
-            var parada = await _context.Parada.FindAsync(id);
+            var parada = await _context.Parada.FindAsync(id); 
 
             if (parada == null)
             {
@@ -101,6 +102,7 @@ var paradas = await query.ToListAsync();            if (!string.IsNullOrEmpty(re
         {
             var paradas = await _context.Parada
                 .Where((p => p.Latitude == request.latitude && p.Longitude == request.longitude))
+                .AsNoTracking()
                 .ToListAsync();
 
             if (paradas == null || !paradas.Any())

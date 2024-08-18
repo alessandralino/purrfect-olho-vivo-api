@@ -94,14 +94,43 @@ namespace purrfect_olho_vivo_api.Services
         }
 
 
-        public async Task<IEnumerable<VeiculoGetAllResponse>> GetAll()
+        public async Task<IEnumerable<VeiculoGetAllResponse>> GetAll(VeiculoGetRequest request)
         {
-            var lista = await _context.Veiculo
+            var query = _context.Veiculo.AsQueryable();
+
+            if (request?.Id.HasValue == true)
+            {
+                query = query.Where(v => v.Id == request.Id.Value);
+            }
+
+            if (!string.IsNullOrEmpty(request?.Name))
+            {
+                query = query.Where(v => v.Name.Contains(request.Name));
+            }
+
+            if (!string.IsNullOrEmpty(request?.Modelo))
+            {
+                query = query.Where(v => v.Modelo.Contains(request.Modelo));
+            }
+
+            if (request?.LinhaId.HasValue == true)
+            {
+                query = query.Where(v => v.LinhaId == request.LinhaId.Value);
+            }
+
+
+            var lista = await query
                 .Include(l => l.Linha)
                 .ThenInclude(p => p.Paradas)
+                .AsNoTracking()
                 .ToListAsync();
 
             List<VeiculoGetAllResponse> responseList = formatarGetAllResponse (lista);
+
+            if (responseList == null)
+            {
+                throw new KeyNotFoundException("Nenhum Veículo encontrado.");
+            }
 
             return responseList;
         }

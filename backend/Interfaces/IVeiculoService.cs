@@ -8,7 +8,7 @@ namespace purrfect_olho_vivo_api.Interfaces
 {
     public interface IVeiculoService
     {
-        Task<IEnumerable<VeiculoGetAllResponse>> GetAll();
+        Task<IEnumerable<VeiculoGetAllResponse>> GetAll(VeiculoGetRequest request);
         Task<ActionResult<Veiculo>> GetVeiculoById(long id);
         Task<IEnumerable<Veiculo>> GetVeiculoByLinha(int idLinha);
         Task<VeiculoCreateResponse> Create(VeiculoCreateRequest request);
