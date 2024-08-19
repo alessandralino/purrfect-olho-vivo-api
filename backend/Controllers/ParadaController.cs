@@ -4,6 +4,8 @@ using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
 using purrfect_olho_vivo_api.Interfaces;
+using purrfect_olho_vivo_api.Extensions;
+using purrfect_olho_vivo_api.Models.Requests;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -24,6 +26,13 @@ namespace purrfect_olho_vivo_api.Controllers
             try
             {
                 var paradas = await _paradaService.GetAll(request);
+
+                Response.AddPaginationHeader(
+                    new PaginationHeader(
+                        request.pageNumber,
+                        request.pageSize, 
+                        paradas.Count(), 
+                        paradas.TotalPages));
 
                 return Ok(paradas);
             }

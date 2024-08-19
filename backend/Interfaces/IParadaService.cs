@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using purrfect_olho_vivo_api.Domain;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
@@ -7,7 +8,7 @@ namespace purrfect_olho_vivo_api.Interfaces
 {
     public interface IParadaService
     {
-        Task<IEnumerable<Parada>> GetAll(ParadaGetRequest? request);
+        Task<PagedList<Parada>> GetAll(ParadaGetRequest? request);
         Task<ActionResult<Parada>> GetParadaById(long id);
         Task<IEnumerable<Parada>> GetParadaByPosicao(ParadaGetByPosicaoRequest request);
         Task<Parada> Create(ParadaCreateRequest request);        

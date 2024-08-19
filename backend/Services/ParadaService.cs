@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Azure.Core;
 using System.Composition;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using purrfect_olho_vivo_api.Helpers;
+using System.Drawing.Printing;
+using purrfect_olho_vivo_api.Domain;
+using NuGet.Protocol.Core.Types;
 
 namespace purrfect_olho_vivo_api.Services
 {
@@ -51,7 +55,7 @@ namespace purrfect_olho_vivo_api.Services
             return true;
         }
 
-        public async Task<IEnumerable<Parada>> GetAll(ParadaGetRequest? request)
+        public async Task<PagedList<Parada>> GetAll(ParadaGetRequest request)
         {
             var query = _context.Parada.AsQueryable();
 
@@ -74,15 +78,17 @@ namespace purrfect_olho_vivo_api.Services
             {
                 query = query.Where(p => p.Longitude == request.Longitude.Value);
             }
-            
-            var paradas = await query.AsNoTracking().ToListAsync();
+
+            var paradas = await PaginationHelper.CreateAsync(query, request.pageNumber, request.pageSize);
+
 
             if (paradas == null || !paradas.Any())
             {
                 throw new KeyNotFoundException("Nenhuma parada encontrada.");
             }
+             
 
-            return paradas;
+            return new PagedList<Parada>(paradas, request.pageNumber, request.pageSize, paradas.TotalCount);
         }
 
 
