@@ -4,6 +4,7 @@ using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.ViewModels.Responses;
 using purrfect_olho_vivo_api.Interfaces;
+using purrfect_olho_vivo_api.Domain;
 
 namespace purrfect_olho_vivo_api.Services
 
@@ -61,9 +62,8 @@ namespace purrfect_olho_vivo_api.Services
             await _context.SaveChangesAsync();
 
             return true;
-        }
-
-        public async Task<LinhaGetAllResponse> GetAll(LinhaGetRequest request)
+        } 
+        public async  Task<PagedList<LinhaGetAllResponse>> GetAll(LinhaGetRequest request)
         {
             var query = _context.Linha.AsQueryable();
 
@@ -82,15 +82,24 @@ namespace purrfect_olho_vivo_api.Services
                 query = query.Where(l => l.Paradas.Any(p => p.Id == request.IdParada.Value));
             }
 
+            // Total de itens antes da paginação
+            var totalItems = await query.CountAsync();
+
+            // Aplicar paginação
             var linhas = await query
                             .Include(l => l.Paradas)
                             .AsNoTracking()
+                            .Skip((request.pageNumber - 1) * request.pageSize)
+                            .Take(request.pageSize)
                             .ToListAsync();
 
+          
 
-            if (linhas.Count() > 0)
+
+            if (linhas.Any())
             {
-                var options = linhas.Select(l => new LinhaResponse
+                // Mapeando os dados de Linha para LinhaResponse
+                var linhaResponses = linhas.Select(l => new LinhaResponse
                 {
                     Id = l.Id,
                     Name = l.Name,
@@ -103,12 +112,24 @@ namespace purrfect_olho_vivo_api.Services
                     }).ToList()
                 }).ToList();
 
-                LinhaGetAllResponse resultado = new LinhaGetAllResponse
+                // Criando uma instância de LinhaGetAllResponse que encapsula a lista de LinhaResponse
+                var linhaGetAllResponse = new LinhaGetAllResponse
                 {
-                    Linhas = options
+                    Linhas = linhaResponses
                 };
 
-                return resultado;
+                // Criando uma lista contendo o objeto LinhaGetAllResponse
+                var responseList = new List<LinhaGetAllResponse> { linhaGetAllResponse };
+
+                // Criando a PagedList de LinhaGetAllResponse
+                var pagedResult = new PagedList<LinhaGetAllResponse>(
+                    responseList,
+                    request.pageNumber,
+                    request.pageSize,
+                    totalItems
+                );
+
+                return pagedResult;
             }
             else
             {
