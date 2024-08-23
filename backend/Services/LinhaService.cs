@@ -93,9 +93,6 @@ namespace purrfect_olho_vivo_api.Services
                             .Take(request.pageSize)
                             .ToListAsync();
 
-          
-
-
             if (linhas.Any())
             {
                 // Mapeando os dados de Linha para LinhaResponse
