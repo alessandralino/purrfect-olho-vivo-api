@@ -65,7 +65,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -77,8 +77,7 @@
               "RelativeToolTip": "Models\\Requests\\PaginationHeader.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T21:47:02.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T21:47:02.578Z"
             },
             {
               "$type": "Document",
@@ -90,8 +89,7 @@
               "RelativeToolTip": "Interfaces\\IParadaService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T21:56:07.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T21:56:07.312Z"
             },
             {
               "$type": "Document",
@@ -103,8 +101,7 @@
               "RelativeToolTip": "Services\\ParadaService.cs",
               "ViewState": "AQIAADQAAAAAAAAAAAAvwDkAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T21:48:34.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T21:48:34.175Z"
             },
             {
               "$type": "Document",
@@ -116,18 +113,7 @@
               "RelativeToolTip": "Controllers\\LinhaController.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAAAB4AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T21:21:25.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "dbo.Linha [Dados]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OlhoVivoDatabase/True/SqlTable/dbo.Linha.sql",
-              "ToolTip": "dbo.Linha [Dados]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2024-08-20T21:37:10.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T21:21:25.233Z"
             },
             {
               "$type": "Document",
@@ -152,12 +138,16 @@
               "RelativeToolTip": "Controllers\\ParadaController.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAjwBsAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T21:52:06.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T21:52:06.033Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "dbo.Linha [Dados]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OlhoVivoDatabase/True/SqlTable/dbo.Linha.sql",
+              "ToolTip": "dbo.Linha [Dados]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-08-20T21:37:10.11Z"
             },
             {
               "$type": "Document",
@@ -169,8 +159,7 @@
               "RelativeToolTip": "Models\\Responses\\LinhaResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T21:16:55.859Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T21:16:55.859Z"
             },
             {
               "$type": "Document",
@@ -182,8 +171,7 @@
               "RelativeToolTip": "Domain\\PagedList.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAASwAkAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T21:43:31.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T21:43:31.792Z"
             },
             {
               "$type": "Document",
@@ -195,8 +183,7 @@
               "RelativeToolTip": "Models\\Requests\\LinhaGetRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T21:10:21.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T21:10:21.672Z"
             },
             {
               "$type": "Document",
@@ -208,8 +195,7 @@
               "RelativeToolTip": "Interfaces\\ILinhaService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T21:08:39.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T21:08:39.141Z"
             },
             {
               "$type": "Document",
@@ -221,8 +207,7 @@
               "RelativeToolTip": "Models\\Requests\\FiltroRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T22:07:34.355Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T22:07:34.355Z"
             },
             {
               "$type": "Document",
@@ -247,6 +232,10 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-08-19T21:44:26.153Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
