@@ -487,6 +487,7 @@ $RECYCLE.BIN/
 # Ignorar as pastas bin e obj
 bin/
 obj/
+vs/
 
 # Ignorar arquivos temporários de compilação
 *.exe
