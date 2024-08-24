@@ -4,6 +4,9 @@ using purrfect_olho_vivo_api.ViewModels.Responses;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
 using purrfect_olho_vivo_api.Interfaces;
+using Azure;
+using purrfect_olho_vivo_api.Extensions;
+using purrfect_olho_vivo_api.Models.Requests;
 
 namespace purrfect_olho_vivo_api.Controllers
 {
@@ -22,14 +25,25 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VeiculoGetAllResponse>>> GetAll([FromQuery] VeiculoGetRequest request)
         {
-            var responseList = await _veiculoService.GetAll(request);
+            try
+            {
+                var response = await _veiculoService.GetAll(request);
 
-            if (responseList == null || !responseList.Any())
+                Response.AddPaginationHeader(
+                    new PaginationHeader(
+                        request.pageNumber,
+                        request.pageSize,
+                        response.TotalCount,
+                        response.TotalPages)
+                    ); 
+
+                return Ok(response); 
+            }
+            catch (KeyNotFoundException ex)
             {
                 return NotFound();
             }
-
-            return Ok(responseList);
+           
         }
 
 

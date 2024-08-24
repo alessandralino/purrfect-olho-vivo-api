@@ -45,14 +45,17 @@ namespace purrfect_olho_vivo_api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Parada>> GetParadaById(long id)
         {
-            var parada = await _paradaService.GetParadaById(id);     
-
-            if (parada == null)
+            try
             {
+                var parada = await _paradaService.GetParadaById(id); 
+
+                return parada;
+            }
+            catch (KeyNotFoundException)
+            {
+
                 return NotFound();
             }
-
-            return parada; 
         }
 
         [HttpPost]

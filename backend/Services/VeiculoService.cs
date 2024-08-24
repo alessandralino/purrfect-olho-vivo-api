@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
+using purrfect_olho_vivo_api.Domain;
 using purrfect_olho_vivo_api.Interfaces;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
@@ -94,7 +95,7 @@ namespace purrfect_olho_vivo_api.Services
         }
 
 
-        public async Task<IEnumerable<VeiculoGetAllResponse>> GetAll(VeiculoGetRequest request)
+        public async Task<PagedList<VeiculoGetAllResponse>> GetAll(VeiculoGetRequest request)
         {
             var query = _context.Veiculo.AsQueryable();
 
@@ -118,21 +119,35 @@ namespace purrfect_olho_vivo_api.Services
                 query = query.Where(v => v.LinhaId == request.LinhaId.Value);
             }
 
+            // Total de itens antes da paginação
+            var totalItems = await query.CountAsync();
 
             var lista = await query
                 .Include(l => l.Linha)
                 .ThenInclude(p => p.Paradas)
+                .Skip((request!.pageNumber - 1) * request.pageSize)
+                .Take(request.pageSize)
                 .AsNoTracking()
                 .ToListAsync();
 
             List<VeiculoGetAllResponse> responseList = formatarGetAllResponse (lista);
 
-            if (responseList == null)
+            if (responseList.Any())
+            {
+                var pagedResult = new PagedList<VeiculoGetAllResponse>(
+                    responseList,
+                    request!.pageNumber,
+                    request.pageSize,
+                    totalItems
+                );
+
+                return pagedResult;
+            }
+            else
             {
                 throw new KeyNotFoundException("Nenhum Veículo encontrado.");
-            }
-
-            return responseList;
+            } 
+           
         }
 
         private static List<VeiculoGetAllResponse> formatarGetAllResponse(List<Veiculo> lista)

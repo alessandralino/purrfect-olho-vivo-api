@@ -63,7 +63,7 @@ namespace purrfect_olho_vivo_api.Services
 
             return true;
         } 
-        public async  Task<PagedList<LinhaGetAllResponse>> GetAll(LinhaGetRequest request)
+        public async Task<PagedList<LinhaGetAllResponse>> GetAll(LinhaGetRequest request)
         {
             var query = _context.Linha.AsQueryable();
 
