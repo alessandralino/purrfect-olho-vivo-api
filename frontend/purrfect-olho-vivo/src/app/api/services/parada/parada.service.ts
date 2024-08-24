@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ParadaFiltro, ParadaResponse } from './response/paradaResponse.model';
+import { ParadaResponse } from './response/paradaResponse.model';
 import { catchError, Observable, of } from 'rxjs';
+import { ParadaFiltro } from './request/paradaRequest.model';
 
 
 @Injectable({
@@ -29,8 +30,19 @@ export class ParadaService {
       if (filter.longitude) {
         params = params.set('Longitude', filter.longitude.toString());
       }
+      if (filter.pageNumber) {
+        params = params.set('pageNumber', filter.pageNumber.toString());
+      }
+      if (filter.pageSize) {
+        params = params.set('pageSize', filter.pageSize.toString());
+      } 
+    }else{
+      filter = new ParadaFiltro();
+      params = params.set('pageNumber', filter.pageNumber.toString());
+      params = params.set('pageSize', filter.pageSize.toString());
     }
 
+    
     return this.http.get<ParadaResponse[]>(this.url, { params: params }).pipe(
       catchError(error => {
         if (error.status === 404) {

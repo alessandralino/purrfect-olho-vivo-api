@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Parada, ParadaFiltro, ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model';
+import { Parada, ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model';
 import { ParadaService } from '../../../api/services/parada/parada.service';
+import { ParadaFiltro } from '../../../api/services/parada/request/paradaRequest.model';
 
 @Component({
   selector: 'app-filtrar-paradas',
@@ -20,8 +21,7 @@ export class FiltrarParadasComponent implements OnInit{
   ngOnInit(): void {
   } 
 
-  filtrarParadas(){
-    console.log("Filtrar paradas...", this.paradaFiltro);
+  filtrarParadas(){ 
     this.onFilterApplied.emit(this.paradaFiltro);
   } 
 }

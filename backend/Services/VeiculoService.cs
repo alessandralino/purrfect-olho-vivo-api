@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using purrfect_olho_vivo_api.Context;
 using purrfect_olho_vivo_api.Domain;
+using purrfect_olho_vivo_api.Helpers;
 using purrfect_olho_vivo_api.Interfaces;
 using purrfect_olho_vivo_api.ViewModels.Models;
 using purrfect_olho_vivo_api.ViewModels.Requests;
@@ -129,8 +130,9 @@ namespace purrfect_olho_vivo_api.Services
                 .Take(request.pageSize)
                 .AsNoTracking()
                 .ToListAsync();
+             
 
-            List<VeiculoGetAllResponse> responseList = formatarGetAllResponse (lista);
+            List<VeiculoGetAllResponse> responseList = formatarGetAllResponse(lista);
 
             if (responseList.Any())
             {

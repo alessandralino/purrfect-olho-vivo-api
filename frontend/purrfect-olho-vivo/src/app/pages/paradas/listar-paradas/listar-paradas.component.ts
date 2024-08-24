@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ParadaService } from '../../../api/services/parada/parada.service';
-import { ParadaFiltro, ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model';
+import { ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model'; 
+import { ParadaFiltro } from '../../../api/services/parada/request/paradaRequest.model';
 
 @Component({
   selector: 'app-listar-paradas',
@@ -8,15 +9,16 @@ import { ParadaFiltro, ParadaResponse } from '../../../api/services/parada/respo
   styleUrl: './listar-paradas.component.css'
 })
 export class ListarParadasComponent implements OnInit{
-
+  
   listaParadas : ParadaResponse[] | undefined;
   constructor(private paradaService : ParadaService){}
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.getAllParadas();
   }
 
-  getAllParadas(filter?: ParadaFiltro) {
+  getAllParadas(filter?: ParadaFiltro) { 
+   
     this.paradaService.getAllParadas(filter).subscribe(
       data => {
         this.listaParadas = data;
@@ -28,7 +30,7 @@ export class ListarParadasComponent implements OnInit{
     );
   }
  
-  onFilterApplied(filter: ParadaFiltro) {
+  onFilterApplied(filter: ParadaFiltro) {  
     this.getAllParadas(filter);
   }
 }

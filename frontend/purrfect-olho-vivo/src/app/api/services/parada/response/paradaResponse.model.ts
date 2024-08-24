@@ -37,21 +37,4 @@ export class ParadaResponse {
     }
      
   }
-
-
-   
-  export class ParadaFiltro {
-    id? : number;
-    nome?: string;
-    latitude?: string;
-    longitude?: string;
-  
-    constructor( id?: number, nome?: string, latitude?: string, longitude?: string) {
-      this.id = id || undefined;
-      this.nome = nome || '';
-      this.latitude = latitude || '';
-      this.longitude = longitude || '';
-    }
-   
-  }
   
