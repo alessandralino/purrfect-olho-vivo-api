@@ -18,7 +18,6 @@ export class ListarParadasComponent implements OnInit{
   }
 
   getAllParadas(filter?: ParadaFiltro) { 
-   
     this.paradaService.getAllParadas(filter).subscribe(
       data => {
         this.listaParadas = data;

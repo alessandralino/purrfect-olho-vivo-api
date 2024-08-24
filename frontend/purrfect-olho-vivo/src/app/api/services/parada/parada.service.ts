@@ -42,14 +42,11 @@ export class ParadaService {
       params = params.set('pageSize', filter.pageSize.toString());
     }
 
-    
     return this.http.get<ParadaResponse[]>(this.url, { params: params }).pipe(
       catchError(error => {
-        if (error.status === 404) {
-          // Retorna uma lista vazia em caso de erro 404
+        if (error.status === 404) { 
           return of([]);
-        } else {
-          // Re-throw the error if it's not a 404
+        } else { 
           throw error;
         }
       })

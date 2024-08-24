@@ -1,7 +1,12 @@
 .topo-container{
     margin-bottom: 30px;
  }
+.botaoContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-.botaoFiltrar{
-    margin-bottom: 30px;
- }
+.botaoContainer .form-control {
+    flex: 1;
+}

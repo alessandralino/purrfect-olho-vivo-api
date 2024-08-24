@@ -8,20 +8,34 @@ import { ParadaFiltro } from '../../../api/services/parada/request/paradaRequest
   templateUrl: './filtrar-paradas.component.html',
   styleUrl: './filtrar-paradas.component.css'
 })
-export class FiltrarParadasComponent implements OnInit{
+export class FiltrarParadasComponent implements OnInit
+{
   paradaFiltro : ParadaFiltro;
   listaParadas : ParadaResponse[] | undefined;
 
   @Output() onFilterApplied: EventEmitter<ParadaFiltro> = new EventEmitter<ParadaFiltro>();
 
-  constructor(private paradaService : ParadaService){
+  constructor(private paradaService : ParadaService)
+  {
     this.paradaFiltro = new ParadaFiltro();
   }
 
-  ngOnInit(): void {
-  } 
+  ngOnInit(): void 
+  {  } 
 
-  filtrarParadas(){ 
+  filtrarParadas()
+  { 
     this.onFilterApplied.emit(this.paradaFiltro);
   } 
+
+  limparFiltros()
+  {
+    this.instanciarParadaFiltro();
+    this.filtrarParadas();
+  }
+
+  private instanciarParadaFiltro() 
+  {
+    this.paradaFiltro = new ParadaFiltro();
+  }
 }

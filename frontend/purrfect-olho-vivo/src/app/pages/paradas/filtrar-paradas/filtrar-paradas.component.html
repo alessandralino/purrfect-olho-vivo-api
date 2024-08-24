@@ -33,9 +33,16 @@
             [(ngModel)]="paradaFiltro.longitude" 
             placeholder="Digite a longitude da parada">             
 </div>
-<div class="botaoFiltrar"> 
+ 
+<div class="botaoContainer"> 
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block form-control ml-2" 
+                (click)="limparFiltros()">
+                Limpar Campos
+        </button>
+        
         <button type="button" class="btn btn-dark btn-lg btn-block form-control" 
                 (click)="filtrarParadas()">
                 Filtrar
-        </button>
+        </button> 
 </div>
+    
