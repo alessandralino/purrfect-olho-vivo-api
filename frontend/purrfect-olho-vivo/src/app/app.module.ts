@@ -16,6 +16,7 @@ import { ListarVeiculosComponent } from './pages/veiculos/listar-veiculos/listar
 import { ListarLinhasComponent } from './pages/linhas/listar-linhas/listar-linhas.component';
 import { ListarPosicaoVeiculosComponent } from './pages/posicao-veiculos/listar-posicao-veiculos/listar-posicao-veiculos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PurrfectPaginationComponent } from './components/purrfect-pagination/purrfect-pagination.component';
 
 
 
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     PurrfectHomeComponent,
     ListarVeiculosComponent,
     ListarLinhasComponent,
-    ListarPosicaoVeiculosComponent
+    ListarPosicaoVeiculosComponent,
+    PurrfectPaginationComponent
   ],
   imports: [
     BrowserModule,

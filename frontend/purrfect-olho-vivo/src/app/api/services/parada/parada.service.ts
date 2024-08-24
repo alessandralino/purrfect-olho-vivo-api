@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { ParadaResponse } from './response/paradaResponse.model';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { ParadaFiltro } from './request/paradaRequest.model';
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class ParadaService {
 
   constructor(private http: HttpClient) { }
 
-   getAllParadas(filter?: ParadaFiltro): Observable<ParadaResponse[]> {
+  getAllParadas(filter?: ParadaFiltro): Observable<{ data: ParadaResponse[], pagination: any }> {
     let params = new HttpParams();
 
     if (filter) {
@@ -36,17 +35,21 @@ export class ParadaService {
       if (filter.pageSize) {
         params = params.set('pageSize', filter.pageSize.toString());
       } 
-    }else{
+    } else {
       filter = new ParadaFiltro();
       params = params.set('pageNumber', filter.pageNumber.toString());
       params = params.set('pageSize', filter.pageSize.toString());
     }
 
-    return this.http.get<ParadaResponse[]>(this.url, { params: params }).pipe(
+    return this.http.get<ParadaResponse[]>(this.url, { params: params, observe: 'response' }).pipe(
+      map((response: HttpResponse<ParadaResponse[]>) => {
+        const pagination = JSON.parse(response.headers.get('pagination') || '{}');
+        return { data: response.body || [], pagination: pagination };
+      }),
       catchError(error => {
-        if (error.status === 404) { 
-          return of([]);
-        } else { 
+        if (error.status === 404) {
+          return of({ data: [], pagination: {} });
+        } else {
           throw error;
         }
       })

@@ -30,8 +30,8 @@ namespace purrfect_olho_vivo_api.Controllers
                 Response.AddPaginationHeader(
                     new PaginationHeader(
                         request.pageNumber,
-                        request.pageSize, 
-                        paradas.Count(), 
+                        request.pageSize,
+                        paradas.TotalCount,
                         paradas.TotalPages));
 
                 return Ok(paradas);

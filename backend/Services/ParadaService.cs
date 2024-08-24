@@ -58,6 +58,7 @@ namespace purrfect_olho_vivo_api.Services
         public async Task<PagedList<Parada>> GetAll(ParadaGetRequest request)
         {
             var query = _context.Parada.AsQueryable();
+             
 
             if (request?.Id.HasValue == true)
             {
@@ -78,6 +79,8 @@ namespace purrfect_olho_vivo_api.Services
             {
                 query = query.Where(p => p.Longitude == request.Longitude.Value);
             }
+            
+            var totalItems = await query.CountAsync();
 
             var paradas = await PaginationHelper.CreateAsync(query, request.pageNumber, request.pageSize);
 
@@ -88,7 +91,7 @@ namespace purrfect_olho_vivo_api.Services
             }
              
 
-            return new PagedList<Parada>(paradas, request.pageNumber, request.pageSize, paradas.TotalCount);
+            return new PagedList<Parada>(paradas, request.pageNumber, request.pageSize, totalItems);
         }
 
 
