@@ -16,18 +16,21 @@ export class ListarParadasComponent implements OnInit {
   totalPages : number = PaginationConstants.TOTAL_PAGES;
   currentPage: number = PaginationConstants.CURRENT_PAGE;
   pageSize: number = PaginationConstants.PAGE_SIZE;
-  
+  filter : ParadaFiltro;
 
-  constructor(private paradaService: ParadaService) {}
+  constructor(private paradaService: ParadaService) {
+    this.filter = new ParadaFiltro();
+  }
 
   ngOnInit(): void {  
     this.getAllParadas();
   }
 
   getAllParadas(filter?: ParadaFiltro) { 
-    filter = filter || new ParadaFiltro();
-    filter.pageNumber = this.currentPage;
-    filter.pageSize = this.pageSize;
+    
+
+    this.filter.pageNumber = this.currentPage;
+    this.filter.pageSize = this.pageSize;
 
     this.paradaService.getAllParadas(filter).subscribe(
       response => {
@@ -45,7 +48,7 @@ export class ListarParadasComponent implements OnInit {
   }
  
   onFilterApplied(filter: ParadaFiltro) {  
-    this.currentPage = 1; 
+    //this.currentPage = 1; 
     this.getAllParadas(filter);
   }
 

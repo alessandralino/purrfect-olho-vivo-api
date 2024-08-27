@@ -29,9 +29,15 @@
     </tr>
   </tbody>
 </table>
+ 
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <span>{{totalItems}} resultados encontrados</span>
+  <app-purrfect-pagination
+    [totalPages]="totalPages" 
+    [currentPage]="currentPage" 
+    (pageChanged)="onPageChanged($event)">
+  </app-purrfect-pagination>
+</div>
 
-<app-purrfect-pagination
-  [totalPages]="totalPages" 
-  [currentPage]="currentPage" 
-  (pageChanged)="onPageChanged($event)">
-</app-purrfect-pagination>
+
+  
