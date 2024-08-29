@@ -1,7 +1,7 @@
 <app-filtrar-paradas (onFilterApplied)="onFilterApplied($event)"></app-filtrar-paradas> 
  
 
-<app-purrfect-dynamic-table [data]="listaParadas">  
+<app-purrfect-dynamic-table [data]="(listaParadas$ | async) || []">
     <app-purrfect-column-dynamic-table header="Número" field="id"></app-purrfect-column-dynamic-table>
     <app-purrfect-column-dynamic-table header="Nome" field="name"></app-purrfect-column-dynamic-table>
     <app-purrfect-column-dynamic-table header="Latitude" field="latitude"></app-purrfect-column-dynamic-table>

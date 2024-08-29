@@ -1,50 +1,55 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ParadaService } from '../../../api/services/parada/parada.service';
 import { ParadaResponse } from '../../../api/services/parada/response/paradaResponse.model'; 
 import { ParadaFiltro } from '../../../api/services/parada/request/paradaRequest.model';
 import { PaginationConstants } from '../../../constants/pagination.constants';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-listar-paradas',
   templateUrl: './listar-paradas.component.html',
-  styleUrl: './listar-paradas.component.css'
+  styleUrls: ['./listar-paradas.component.css']
 })
 export class ListarParadasComponent implements OnInit {
+  private filterSubject: BehaviorSubject<ParadaFiltro> = new BehaviorSubject(new ParadaFiltro());
 
-  listaParadas: ParadaResponse[] = [];
-
+  listaParadas$: Observable<ParadaResponse[] | any> | undefined;  
   totalItems: number = 0;
-  totalPages : number = PaginationConstants.TOTAL_PAGES;
+  totalPages: number = PaginationConstants.TOTAL_PAGES;
   currentPage: number = PaginationConstants.CURRENT_PAGE;
   pageSize: number = PaginationConstants.PAGE_SIZE;
-  
  
-  constructor(private paradaService: ParadaService) {}
 
+  constructor(private paradaService: ParadaService) {
+    this.getAllParadas();   
+  } 
+  
   ngOnInit(): void {  
-    this.getAllParadas();
+    this.loadFilterParadas(); 
   }
 
-  getAllParadas(filter?: ParadaFiltro) { 
+  loadFilterParadas(filter?: ParadaFiltro) { 
     filter = filter || new ParadaFiltro(); 
-    filter.pageNumber = this.currentPage;
-    filter.pageSize = this.pageSize;
+    this.filterSubject.next(filter); 
+  }
 
-    this.paradaService.getAllParadas(filter).subscribe(
-      response => {
-        this.listaParadas = response.data;  
-
-        this.formatarPaginação(response);  
-        
-      },
-      error => {
-        console.error('Erro ao carregar as paradas', error);
-        this.listaParadas = [];   
-      }
+  private getAllParadas() {
+    this.listaParadas$ = this.filterSubject.asObservable().pipe(
+      switchMap(filter => {
+        filter.pageNumber = this.currentPage;
+        filter.pageSize = this.pageSize;
+        return this.paradaService.getAllParadas(filter).pipe(
+          map(response => {
+            this.formatarPaginacao(response);
+            return response.data || [];
+          })
+        );
+      })
     );
   }
- 
-  private formatarPaginação(response: { data: ParadaResponse[]; pagination: any; }) {
+
+  private formatarPaginacao(response: { data: ParadaResponse[]; pagination: any; }) {
     if (response.pagination) {
       this.totalPages = response.pagination.totalPages ?? PaginationConstants.TOTAL_PAGES;
       this.totalItems = response.pagination.totalItems ?? 0;
@@ -55,12 +60,12 @@ export class ListarParadasComponent implements OnInit {
 
   onFilterApplied(filter: ParadaFiltro) {  
     this.currentPage = PaginationConstants.CURRENT_PAGE; 
-    this.getAllParadas(filter);
+    this.loadFilterParadas(filter);
   }
 
   onPageChanged(page: number) {
     this.currentPage = page;
-    this.getAllParadas();
+    this.loadFilterParadas(); 
   }
 
   view(_t16: any) {
@@ -68,10 +73,10 @@ export class ListarParadasComponent implements OnInit {
   }
 
   delete(_t16: any) {
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
   
   edit(_t16: any) {
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
 }
