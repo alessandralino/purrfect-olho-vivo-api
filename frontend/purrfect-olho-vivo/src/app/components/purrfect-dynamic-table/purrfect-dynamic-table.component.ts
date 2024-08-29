@@ -4,6 +4,7 @@ import { PurrfectColumnDynamicTableComponent } from '../purrfect-column-dynamic-
 @Component({
   selector: 'app-purrfect-dynamic-table',
   templateUrl: './purrfect-dynamic-table.component.html',
+  styleUrl: './purrfect-dynamic-table.component.css'
 })
 export class PurrfectDynamicTableComponent implements AfterContentInit {
   @Input() data: Array<any> = [];

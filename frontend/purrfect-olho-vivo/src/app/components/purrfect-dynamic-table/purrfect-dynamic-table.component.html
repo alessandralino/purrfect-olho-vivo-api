@@ -6,8 +6,9 @@
     </thead>
     <tbody>
       <tr *ngIf="data.length === 0">
-        <td [attr.colspan]="columns.length">Nenhum registro encontrado.</td>
-      </tr>
+        <td colspan="5" class="no-records">Nenhum registro encontrado.</td>
+      </tr> 
+      
       <tr *ngFor="let item of data">
         <td *ngFor="let column of columns">
           <!-- Se a coluna tiver um template personalizado, renderiza-o -->
