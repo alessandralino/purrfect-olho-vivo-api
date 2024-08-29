@@ -1,0 +1,25 @@
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="data.length === 0">
+        <td [attr.colspan]="columns.length">Nenhum registro encontrado.</td>
+      </tr>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let column of columns">
+          <!-- Se a coluna tiver um template personalizado, renderiza-o -->
+          <ng-container *ngIf="column.template; else defaultCell">
+            <ng-container *ngTemplateOutlet="column.template; context: { $implicit: item }"></ng-container>
+          </ng-container>
+          <!-- Renderiza uma célula padrão, caso não tenha template personalizado -->
+          <ng-template #defaultCell>
+            {{ item[column.field!] }}
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

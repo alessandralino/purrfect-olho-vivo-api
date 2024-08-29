@@ -17,6 +17,8 @@ import { ListarLinhasComponent } from './pages/linhas/listar-linhas/listar-linha
 import { ListarPosicaoVeiculosComponent } from './pages/posicao-veiculos/listar-posicao-veiculos/listar-posicao-veiculos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PurrfectPaginationComponent } from './components/purrfect-pagination/purrfect-pagination.component';
+import { PurrfectDynamicTableComponent } from './components/purrfect-dynamic-table/purrfect-dynamic-table.component';
+import { PurrfectColumnDynamicTableComponent } from './components/purrfect-column-dynamic-table/purrfect-column-dynamic-table.component';
 
 
 
@@ -34,7 +36,9 @@ import { PurrfectPaginationComponent } from './components/purrfect-pagination/pu
     ListarVeiculosComponent,
     ListarLinhasComponent,
     ListarPosicaoVeiculosComponent,
-    PurrfectPaginationComponent
+    PurrfectPaginationComponent,
+    PurrfectDynamicTableComponent,
+    PurrfectColumnDynamicTableComponent
   ],
   imports: [
     BrowserModule,
