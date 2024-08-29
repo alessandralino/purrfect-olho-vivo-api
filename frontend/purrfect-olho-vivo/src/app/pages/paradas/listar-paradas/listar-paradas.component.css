@@ -1,6 +1,11 @@
-.no-records {
+.no-records 
+{
   text-align: center;
   color: #6c757d;  
   font-style: italic;
 }
  
+.totalItems
+{
+  font-weight: bold;
+}
