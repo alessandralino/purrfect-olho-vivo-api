@@ -18,14 +18,7 @@ export class ListarParadasComponent implements OnInit {
   currentPage: number = PaginationConstants.CURRENT_PAGE;
   pageSize: number = PaginationConstants.PAGE_SIZE;
   
-
-  columns = [
-    { header: 'Número', field: 'id' },
-    { header: 'Nome', field: 'name' },
-    { header: 'Latitude', field: 'latitude' },
-    { header: 'Longitude', field: 'longitude' }
-  ];
-
+ 
   constructor(private paradaService: ParadaService) {}
 
   ngOnInit(): void {  
@@ -33,17 +26,16 @@ export class ListarParadasComponent implements OnInit {
   }
 
   getAllParadas(filter?: ParadaFiltro) { 
-    filter = filter || new ParadaFiltro();
+    filter = filter || new ParadaFiltro(); 
     filter.pageNumber = this.currentPage;
     filter.pageSize = this.pageSize;
 
     this.paradaService.getAllParadas(filter).subscribe(
       response => {
-        this.listaParadas = response.data; 
-        this.totalPages = response.pagination.totalPages;
-        this.totalItems = response.pagination.totalItems;
-        this.currentPage = response.pagination.currentPage;
-        this.pageSize = response.pagination.itemsPerPage;
+        this.listaParadas = response.data;  
+
+        this.formatarPaginação(response);  
+        
       },
       error => {
         console.error('Erro ao carregar as paradas', error);
@@ -52,6 +44,15 @@ export class ListarParadasComponent implements OnInit {
     );
   }
  
+  private formatarPaginação(response: { data: ParadaResponse[]; pagination: any; }) {
+    if (response.pagination) {
+      this.totalPages = response.pagination.totalPages ?? PaginationConstants.TOTAL_PAGES;
+      this.totalItems = response.pagination.totalItems ?? 0;
+      this.currentPage = response.pagination.currentPage ?? this.currentPage;
+      this.pageSize = response.pagination.itemsPerPage ?? PaginationConstants.PAGE_SIZE;
+    }
+  }
+
   onFilterApplied(filter: ParadaFiltro) {  
     this.currentPage = PaginationConstants.CURRENT_PAGE; 
     this.getAllParadas(filter);

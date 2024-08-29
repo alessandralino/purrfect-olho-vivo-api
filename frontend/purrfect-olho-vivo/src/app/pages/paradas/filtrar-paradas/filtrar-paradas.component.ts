@@ -17,7 +17,7 @@ export class FiltrarParadasComponent implements OnInit
 
   constructor(private paradaService : ParadaService)
   {
-    this.paradaFiltro = new ParadaFiltro();
+    this.paradaFiltro = new ParadaFiltro(); 
   }
 
   ngOnInit(): void 
