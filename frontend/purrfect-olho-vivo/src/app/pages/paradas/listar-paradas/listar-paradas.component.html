@@ -1,37 +1,28 @@
 <app-filtrar-paradas (onFilterApplied)="onFilterApplied($event)"></app-filtrar-paradas> 
+ 
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Número</th> 
-      <th>Nome</th> 
-      <th>Latitude</th> 
-      <th>Longitude</th> 
-      <th>Ações</th> 
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr *ngIf="listaParadas && listaParadas.length === 0">
-      <td colspan="5" class="no-records">Nenhum registro encontrado.</td>
-    </tr>
-    
-    <tr *ngFor="let parada of listaParadas">
-      <td>{{ parada.id }}</td>
-      <td>{{ parada.name }}</td>
-      <td>{{ parada.latitude }}</td>
-      <td>{{ parada.longitude }}</td>
-      <td>
-        <button class="btn">
+<app-purrfect-dynamic-table [data]="listaParadas">  
+    <app-purrfect-column-dynamic-table header="Número" field="id"></app-purrfect-column-dynamic-table>
+    <app-purrfect-column-dynamic-table header="Nome" field="name"></app-purrfect-column-dynamic-table>
+    <app-purrfect-column-dynamic-table header="Latitude" field="latitude"></app-purrfect-column-dynamic-table>
+    <app-purrfect-column-dynamic-table header="Longitude" field="longitude"></app-purrfect-column-dynamic-table> 
+    <app-purrfect-column-dynamic-table header="Ações"> 
+      <ng-template let-item>
+        <button class="btn" (click)="edit(item)">
           <i class="fas fa-edit"></i> 
         </button>
-        <button class="btn btn-danger">Excluir</button>
-        <button class="btn btn-info">Visualizar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
- 
+
+        <button class="btn" (click)="delete(item)">
+          <i class="fas fa-trash-alt"></i> 
+        </button>
+
+        <button class="btn" (click)="view(item)">
+          <i class="fas fa-eye"></i> 
+        </button> 
+      </ng-template>
+    </app-purrfect-column-dynamic-table> 
+  </app-purrfect-dynamic-table>
+
 <div class="d-flex align-items-center justify-content-between mb-3">
   <span>{{totalItems}} resultados encontrados</span>
   <app-purrfect-pagination

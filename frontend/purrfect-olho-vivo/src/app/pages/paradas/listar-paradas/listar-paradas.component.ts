@@ -10,6 +10,7 @@ import { PaginationConstants } from '../../../constants/pagination.constants';
   styleUrl: './listar-paradas.component.css'
 })
 export class ListarParadasComponent implements OnInit {
+
   listaParadas: ParadaResponse[] = [];
 
   totalItems: number = 0;
@@ -17,6 +18,13 @@ export class ListarParadasComponent implements OnInit {
   currentPage: number = PaginationConstants.CURRENT_PAGE;
   pageSize: number = PaginationConstants.PAGE_SIZE;
   
+
+  columns = [
+    { header: 'Número', field: 'id' },
+    { header: 'Nome', field: 'name' },
+    { header: 'Latitude', field: 'latitude' },
+    { header: 'Longitude', field: 'longitude' }
+  ];
 
   constructor(private paradaService: ParadaService) {}
 
@@ -52,5 +60,17 @@ export class ListarParadasComponent implements OnInit {
   onPageChanged(page: number) {
     this.currentPage = page;
     this.getAllParadas();
+  }
+
+  view(_t16: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  delete(_t16: any) {
+  throw new Error('Method not implemented.');
+  }
+  
+  edit(_t16: any) {
+  throw new Error('Method not implemented.');
   }
 }
