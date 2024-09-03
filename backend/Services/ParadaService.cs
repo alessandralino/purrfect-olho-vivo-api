@@ -41,14 +41,14 @@ namespace purrfect_olho_vivo_api.Services
 
         public async Task<bool> Delete(long id)
         {
-            var parada = await _context.Parada.FindAsync(id);
+            var parada = _context.Parada
+                .Where(p => p.Id == id)
+                .ExecuteDelete();
 
-            if (parada == null)
+            if (parada == 0)
             {
                 return false;
             }
-
-            _context.Parada.Remove(parada);
 
             await _context.SaveChangesAsync();
 
