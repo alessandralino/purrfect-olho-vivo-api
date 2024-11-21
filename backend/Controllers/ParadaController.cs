@@ -129,6 +129,8 @@ namespace purrfect_olho_vivo_api.Controllers
         {
             var success = await  _paradaService.Delete(id);
 
+
+
             if (!success)
             {
                 return NotFound();
