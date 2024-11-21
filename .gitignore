@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/purrfect-olho-vivo-api/v17/.wsuo
+/PurrfectOlhoVivo.Tests/obj/Debug/net8.0/PurrfectOlhoVivo.Tests.AssemblyInfo.cs
+/PurrfectOlhoVivo.Tests/obj/Debug/net8.0/PurrfectOlhoVivo.Tests.AssemblyInfoInputs.cache
+/PurrfectOlhoVivo.Tests/obj/Debug/net8.0/PurrfectOlhoVivo.Tests.assets.cache
+/PurrfectOlhoVivo.Tests/obj/Debug/net8.0/PurrfectOlhoVivo.Tests.GeneratedMSBuildEditorConfig.editorconfig
