@@ -64,7 +64,7 @@ namespace purrfect_olho_vivo_api_tests
         [Fact]
         public async Task GetParadaById_ReturnsOkWithParadas()
         {
-            //Arrenge
+            // Arrange
             var mockParadaService = new Mock<IParadaService>();
 
             var parada = new Parada
@@ -88,6 +88,48 @@ namespace purrfect_olho_vivo_api_tests
             Assert.NotNull(result.Value);
             Assert.Equal(1, result?.Value?.Id);
             Assert.Equal("Parada 1", result?.Value?.Name);
+        }
+
+        [Fact]
+        public async Task CreateParadas_HappyPath()
+        {
+            // Arrange
+            var mockParadaService = new Mock<IParadaService>();
+
+            var paradaExpectedResult = new Parada
+            {
+                Id = 1,
+                Name = "Parada 1",
+                Latitude = 1111,
+                Longitude = 2222,
+            };
+
+            mockParadaService
+                .Setup(service => service.Create(It.IsAny<ParadaCreateRequest>()))
+                .ReturnsAsync(paradaExpectedResult);
+
+            var mockParadaController = new ParadaController(mockParadaService.Object);
+
+            var paradaRequest = new ParadaCreateRequest
+            {
+                Name = "Parada 1",
+                Latitude = 1111,
+                Longitude = 2222,
+            };
+
+            //Act
+            var paradaResponse = await mockParadaController.Create(paradaRequest);
+
+            //Assert
+            var result = paradaResponse.Result;
+
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(200, okResult.StatusCode);
+            Assert.NotNull(result);
+            
+            var paradaReceivedResult = Assert.IsAssignableFrom<Parada>(okResult.Value);
+            Assert.Equal(paradaExpectedResult.Id, paradaReceivedResult.Id);
+            Assert.Equal(paradaExpectedResult.Name, paradaReceivedResult.Name);
         }
     }
 }
