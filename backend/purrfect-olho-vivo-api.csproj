@@ -10,9 +10,13 @@
 
   <ItemGroup>
     <Compile Remove="purrfectOlhoVivoApi.Test\**" />
+    <Compile Remove="Repositories\**" />
     <Content Remove="purrfectOlhoVivoApi.Test\**" />
+    <Content Remove="Repositories\**" />
     <EmbeddedResource Remove="purrfectOlhoVivoApi.Test\**" />
+    <EmbeddedResource Remove="Repositories\**" />
     <None Remove="purrfectOlhoVivoApi.Test\**" />
+    <None Remove="Repositories\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,7 +38,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
  
