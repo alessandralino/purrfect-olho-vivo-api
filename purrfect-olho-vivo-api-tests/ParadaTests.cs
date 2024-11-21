@@ -59,6 +59,35 @@ namespace purrfect_olho_vivo_api_tests
             Assert.Equal("Parada 2", returnedParadas[1].Name);
             Assert.Equal(3333, returnedParadas[1].Latitude);
             Assert.Equal(4444, returnedParadas[1].Longitude);
-        }      
+        }
+
+        [Fact]
+        public async Task GetParadaById_ReturnsOkWithParadas()
+        {
+            //Arrenge
+            var mockParadaService = new Mock<IParadaService>();
+
+            var parada = new Parada
+            { 
+                Id = 1, Name = "Parada 1", Latitude = 1111, Longitude = 2222, Linhas = [] 
+            };
+
+            mockParadaService
+                .Setup(service => service.GetParadaById(It.IsAny<long>()))
+                .ReturnsAsync(parada);
+
+            var controller = new ParadaController(mockParadaService.Object);
+
+            long request = 1;
+
+            //Act
+            var result = await controller.GetParadaById(request);
+
+            //Assert
+            Assert.IsType<Parada>(result.Value);
+            Assert.NotNull(result.Value);
+            Assert.Equal(1, result?.Value?.Id);
+            Assert.Equal("Parada 1", result?.Value?.Name);
+        }
     }
 }
