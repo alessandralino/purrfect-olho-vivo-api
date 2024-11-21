@@ -1,20 +1,14 @@
-## PR Type
-What kind of change does this PR introduce?
-```
-[ ] Bugfix
-[ ] Feature
-[ ] Code style update (formatting, local variables)
-[ ] Refactoring (no functional changes, no api changes)
-[ ] Build related changes
-[ ] CI related changes
-[ ] Documentation content changes
-[ ] Tests
-[ ] Other
-```
-[Jira Link](https://xsolve.atlassian.net/browse/PROJECT_KEY)
+## Contexto
+<!-- Resuma o objetivo desse PR. -->
 
-## What's new?
--
+## Descrição
+<!-- Explique de forma clara e concisa o que este PR faz. Descreva o problema que está resolvendo ou a funcionalidade que está adicionando. -->
 
-## Screenshots
-N/A
+## Mudanças realizadas
+<!-- Liste as mudanças principais que foram feitas neste PR. Seja objetivo e específico. -->
+
+## Informações adicionais
+<!-- Inclua aqui qualquer informação relevante, contexto ou observação adicional que ajude na revisão do PR. Isso pode incluir decisões de design, dificuldades enfrentadas, ou links úteis. -->
+
+ 
+
